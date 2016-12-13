@@ -7,4 +7,3 @@ module BlacklightOaiProvider
     VERSION = self.version
   end
 end
-

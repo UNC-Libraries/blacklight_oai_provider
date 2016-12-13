@@ -5,45 +5,47 @@ module BlacklightOaiProvider
     def initialize(controller, options = {})
       @controller = controller
 
-      defaults = { :timestamp => 'timestamp', :limit => 15}
+      defaults = { timestamp: 'timestamp', limit: 15}
       @options = defaults.merge options
 
-      @timestamp_field = @options[:timestamp]
       @limit = @options[:limit]
+      @doument_model = @controller.blacklight_config.document_model || ::SolrDocument
+      @timestamp_field = @options[:timestamp]
+      @timestamp_query_field = @doument_model.timestamp_field
     end
 
     def sets
     end
 
     def earliest
-      Time.parse @controller.get_search_results(@controller.params, {:fl => @timestamp_field, :sort => @timestamp_field +' asc', :rows => 1}).last.first.get(@timestamp_field)
+      Time.parse(search_repository(fl: @timestamp_query_field, rows: 1).documents.first.send(@timestamp_field)) rescue Time.at(0)
     end
 
     def latest
-      Time.parse @controller.get_search_results(@controller.params, {:fl => @timestamp_field, :sort => @timestamp_field +' desc', :rows => 1}).last.first.get(@timestamp_field)
+      Time.parse(search_repository(fl: @timestamp_query_field, sort: 'desc', rows: 1).documents.first.send(@timestamp_field)) rescue Time.now
     end
 
     def find(selector, options={})
       return next_set(options[:resumption_token]) if options[:resumption_token]
 
       if :all == selector
-        response, records = @controller.get_search_results(@controller.params, {:sort => @timestamp_field + ' asc', :rows => @limit})
-
-        if @limit && response.total >= @limit
-          return select_partial(OAI::Provider::ResumptionToken.new(options.merge({:last => 0})))
+        response = search_repository
+        if @limit && response.total > @limit
+          return select_partial(OAI::Provider::ResumptionToken.new(options.merge(last: 0)))
         end
+        response.documents
       else
-        response, records = @controller.get_solr_response_for_doc_id selector.split('/', 2).last
+        response = @controller.fetch(selector.split('/', 2).last).first
+        response.documents.first
       end
-      records
     end
 
-    def select_partial token
-      records = @controller.get_search_results(@controller.params, {:sort => @timestamp_field + ' asc', :rows => @limit, :start => token.last}).last
+    def select_partial(token)
+      records = search_repository(start: token.last).documents
 
       raise ::OAI::ResumptionTokenException.new unless records
 
-      OAI::Provider::PartialResult.new(records, token.next(token.last+@limit))
+      OAI::Provider::PartialResult.new(records, token.next(token.last + @limit))
     end
 
     def next_set(token_string)
@@ -52,6 +54,13 @@ module BlacklightOaiProvider
       token = OAI::Provider::ResumptionToken.parse(token_string)
       select_partial(token)
     end
+
+    private
+
+    def search_repository(params={})
+      params[:sort] = "#{@timestamp_query_field} #{params[:sort] || 'asc'}"
+      params[:rows] = params[:limit] || @limit
+      @controller.repository.search @controller.search_builder.with(@controller.params).merge(params)
+    end
   end
 end
-

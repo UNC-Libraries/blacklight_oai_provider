@@ -9,6 +9,7 @@ Gem::Specification.new do |s|
   s.email = ["chris@cbeer.info", "hinshaw.25@osu.edu"]
   s.homepage    = "http://projectblacklight.org/"
   s.summary = "Blacklight Oai Provider plugin"
+  s.required_ruby_version = "~> 2.0"
 
   s.rubyforge_project = "blacklight"
 
