@@ -48,22 +48,27 @@ OAI-PMH requires a timestamp field for all records, so your Solr index should in
 If the Solr field holding your timestamp is not called "timestamp", you should override the `timestamp_field` class method to return the correct field name, ie:
 
     class SolrDocument
-      # ...
       def self.timestamp_field
         'date_modified'
       end
-      # ...
     end
 
 The `timestamp` method is expected to return a Ruby `Time` object. You can override this method if necessary to perform extra processing:
 
     class SolrDocument
-      # ...
       def timestamp
         Time.parse message_my_data(fetch(self.class.timestamp_field))
       end
-      # ...
     end
+
+You can also explicitly configure the timestamp Solr field and SolrDocument method:
+
+    config.oai = {
+      document: {
+        timestamp_field: 'timestamp_dtsi',
+        timestamp_method: 'date_created'
+      }
+    }
 
 ### Field mapping
 
@@ -90,25 +95,50 @@ While the plugin provides some sensible (albeit generic) defaults out of the box
 in `app/controllers/catalog_controller.rb`
 
     configure_blacklight do |config|
-      # ...
-      configure_blacklight do |config|
-        config.oai = {
-          :provider => {
-            :repository_name => 'Test',
-            :repository_url => 'http://localhost',
-            :record_prefix => '',
-            :admin_email => 'root@localhost'
-          },
-          :document => {
-            :limit => 25
-          }
+      config.oai = {
+        provider: {
+          repository_name: 'Test',
+          repository_url: 'http://localhost',
+          record_prefix: '',
+          admin_email: 'root@localhost'
+        },
+        document: {
+          limit: 25
         }
-      end
-      # ...
+      }
     end
 
 The "provider" configuration is documented as part of the ruby-oai gem at [http://oai.rubyforge.org/](http://oai.rubyforge.org/)
 
 ## Tests
 
-There are currently no tests, but contributions are welcome!. You can test OAI-PMH conformance against [http://www.openarchives.org/data/registerasprovider.html#Protocol_Conformance_Testing](http://www.openarchives.org/data/registerasprovider.html#Protocol_Conformance_Testing) or browse the data at [http://re.cs.uct.ac.za/](http://re.cs.uct.ac.za/) 
+There are currently a few basic tests, but contributions are welcome!
+
+To run the test suite, you'll need to install a few dependencies. First, install [PhantomJS](http://phantomjs.org). macOS users can install PhantomJS using [Homebrew](http://brew.sh):
+
+    $ brew install phantomjs
+
+Next, install all development gems using Bundler:
+
+    $ bundle install
+
+Finally, run the tests using RSpec:
+
+    $ bundle exec rspec
+
+The specs use [VCR](https://github.com/vcr/vcr) to play back HTTP responses from a Solr index. If you need to work directly with a live Solr instance, you will need to run `solr_wrapper` from the root of the dummy Rails application.
+
+    $ cd spec/dummy
+    $ bundle exec solr_wrapper
+
+Then, in another terminal, seed the test data into Solr:
+
+    $ cd spec/dummy
+    $ bundle exec rake blacklight:index:seed
+
+To view the dummy application in your browser, chnage to the application root and run rails from the bin script:
+
+    $ cd spec/dummy
+    $ bin/rails server
+
+You can test OAI-PMH conformance against [http://www.openarchives.org/data/registerasprovider.html#Protocol_Conformance_Testing](http://www.openarchives.org/data/registerasprovider.html#Protocol_Conformance_Testing) or browse the data at [http://re.cs.uct.ac.za/](http://re.cs.uct.ac.za/) 

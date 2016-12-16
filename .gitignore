@@ -4,8 +4,12 @@ pkg/
 spec/dummy/db/*.sqlite3
 spec/dummy/db/*.sqlite3-journal
 spec/dummy/log/*.log
-spec/dummy/tmp/
+spec/dummy/tmp/*
+!spec/dummy/tmp/.keep
 spec/dummy/.sass-cache
+spec/examples.txt
+/tmp
+.byebug_history
 
 # OSX hidden files
 .DS_Store

@@ -7,7 +7,7 @@ module BlacklightOaiProvider
 
       def call(mapper, options = {})
         options = @defaults.merge(options)
-        mapper.get 'oai', action: 'oai', as: 'oai_provider', via: [:get, :post]
+        mapper.match 'oai', action: 'oai', as: 'oai_provider', via: [:get, :post]
       end
     end
   end

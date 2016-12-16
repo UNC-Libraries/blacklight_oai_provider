@@ -10,19 +10,19 @@ module BlacklightOaiProvider
 
       @limit = @options[:limit]
       @doument_model = @controller.blacklight_config.document_model || ::SolrDocument
-      @timestamp_field = @options[:timestamp]
-      @timestamp_query_field = @doument_model.timestamp_field
+      @timestamp_field = @options[:timestamp_method] || @options[:timestamp]
+      @timestamp_query_field = @options[:timestamp_field] || @doument_model.timestamp_field
     end
 
     def sets
     end
 
     def earliest
-      Time.parse(search_repository(fl: @timestamp_query_field, rows: 1).documents.first.send(@timestamp_field)) rescue Time.at(0)
+      search_repository(fl: @timestamp_query_field, rows: 1).documents.first.send(@timestamp_field) rescue Time.at(0)
     end
 
     def latest
-      Time.parse(search_repository(fl: @timestamp_query_field, sort: 'desc', rows: 1).documents.first.send(@timestamp_field)) rescue Time.now
+      search_repository(fl: @timestamp_query_field, sort: 'desc', rows: 1).documents.first.send(@timestamp_field) rescue Time.now
     end
 
     def find(selector, options={})
