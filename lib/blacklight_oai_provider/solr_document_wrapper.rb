@@ -5,7 +5,7 @@ module BlacklightOaiProvider
     def initialize(controller, options = {})
       @controller = controller
 
-      defaults = { timestamp: 'timestamp', limit: 15}
+      defaults = { timestamp: 'timestamp', limit: 15 }
       @options = defaults.merge options
 
       @limit = @options[:limit]
@@ -14,18 +14,21 @@ module BlacklightOaiProvider
       @timestamp_query_field = @options[:timestamp_field] || @doument_model.timestamp_field
     end
 
-    def sets
-    end
+    def sets; end
 
     def earliest
-      search_repository(fl: @timestamp_query_field, rows: 1).documents.first.send(@timestamp_field) rescue Time.at(0)
+      search_repository(fl: @timestamp_query_field, rows: 1).documents.first.send(@timestamp_field)
+    rescue
+      Time.at(0).utc
     end
 
     def latest
-      search_repository(fl: @timestamp_query_field, sort: 'desc', rows: 1).documents.first.send(@timestamp_field) rescue Time.now
+      search_repository(fl: @timestamp_query_field, sort: 'desc', rows: 1).documents.first.send(@timestamp_field)
+    rescue
+      Time.now.utc
     end
 
-    def find(selector, options={})
+    def find(selector, options = {})
       return next_set(options[:resumption_token]) if options[:resumption_token]
 
       if :all == selector
@@ -43,13 +46,13 @@ module BlacklightOaiProvider
     def select_partial(token)
       records = search_repository(start: token.last).documents
 
-      raise ::OAI::ResumptionTokenException.new unless records
+      raise ::OAI::ResumptionTokenException unless records
 
       OAI::Provider::PartialResult.new(records, token.next(token.last + @limit))
     end
 
     def next_set(token_string)
-      raise ::OAI::ResumptionTokenException.new unless @limit
+      raise ::OAI::ResumptionTokenException unless @limit
 
       token = OAI::Provider::ResumptionToken.parse(token_string)
       select_partial(token)
@@ -57,7 +60,7 @@ module BlacklightOaiProvider
 
     private
 
-    def search_repository(params={})
+    def search_repository(params = {})
       params[:sort] = "#{@timestamp_query_field} #{params[:sort] || 'asc'}"
       params[:rows] = params[:limit] || @limit
       @controller.repository.search @controller.search_builder.with(@controller.params).merge(params)

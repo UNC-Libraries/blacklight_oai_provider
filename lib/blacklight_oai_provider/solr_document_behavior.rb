@@ -11,7 +11,7 @@ module BlacklightOaiProvider
     end
 
     def timestamp
-      Time.parse fetch(self.class.timestamp_field, Time.at(0).to_s)
+      Time.parse(fetch(self.class.timestamp_field, Time.at(0).utc.to_s)).utc
     end
 
     def to_oai_dc

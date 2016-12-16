@@ -14,13 +14,13 @@ RSpec.describe BlacklightOaiProvider::SolrDocumentWrapper do
 
   describe "#earliest", :vcr do
     it 'returns the earliest timestamp of all the records' do
-      expect(subject.earliest).to eq Time.parse('2014-01-22 18:42:53.056000000 +0000')
+      expect(subject.earliest).to eq Time.parse('2014-01-22 18:42:53.056000000 +0000').utc
     end
   end
 
   describe "#latest", :vcr do
     it 'returns the latest timestamp of all the records' do
-      expect(subject.latest).to eq Time.parse('2014-10-10 18:42:53.056000000 +0000')
+      expect(subject.latest).to eq Time.parse('2014-10-10 18:42:53.056000000 +0000').utc
     end
   end
 

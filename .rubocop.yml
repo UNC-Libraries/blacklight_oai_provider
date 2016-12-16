@@ -1,0 +1,60 @@
+require: rubocop-rspec
+
+AllCops:
+  TargetRubyVersion: 2.3
+  # Cop names are not displayed in offense messages by default. Change behavior
+  # by overriding DisplayCopNames, or by giving the -D/--display-cop-names
+  # option.
+  DisplayCopNames: true
+  # Style guide URLs are not displayed in offense messages by default. Change
+  # behavior by overriding DisplayStyleGuide, or by giving the
+  # -S/--display-style-guide option.
+  DisplayStyleGuide: false
+  # Exclude some GitLab files
+  Exclude:
+    - 'spec/dummy/**/*'
+    - 'tmp/**/*'
+    - 'bin/**/*'
+    - 'log/*'
+
+##################### Rails ##################################
+
+# Enables Rails cops.
+Rails:
+  Enabled: true
+
+##################### Style ##################################
+
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
+Style/StringLiterals:
+  Enabled: false
+
+Metrics/LineLength:
+  Enabled: false
+
+Style/Documentation:
+  Enabled: false
+
+#################### Metrics ################################
+
+Metrics/AbcSize:
+  Enabled: true
+  Max: 20
+
+Metrics/MethodLength:
+  Enabled: true
+  Max: 20
+
+##################### RSpec ##################################
+
+RSpec/ExpectActual:
+  Enabled: false
+
+RSpec/MultipleExpectations:
+  Enabled: true
+  Max: 4
+
+RSpec/NamedSubject:
+  Enabled: false

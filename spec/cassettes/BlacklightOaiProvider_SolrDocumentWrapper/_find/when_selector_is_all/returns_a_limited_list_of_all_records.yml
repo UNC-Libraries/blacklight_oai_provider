@@ -13,7 +13,7 @@ http_interactions:
       message: OK
     headers:
       Last-Modified:
-      - Fri, 16 Dec 2016 18:58:09 GMT
+      - Fri, 16 Dec 2016 21:13:15 GMT
       Etag:
       - '"MzAwMDAwMDAwMDAwMDAwMFNvbHI="'
       Content-Type:
@@ -290,7 +290,7 @@ http_interactions:
         JywnY291bnQnPT4yfSx7J2ZpZWxkJz0+J2xhbmd1YWdlX2ZhY2V0JywndmFs
         dWUnPT4nQ2hpbmVzZScsJ2NvdW50Jz0+MX1dfV19fX0K
     http_version: 
-  recorded_at: Fri, 16 Dec 2016 19:57:59 GMT
+  recorded_at: Fri, 16 Dec 2016 21:14:48 GMT
 - request:
     method: get
     uri: http://127.0.0.1:8983/solr/blacklight-core/select?f.language_facet.facet.limit=11&f.subject_topic_facet.facet.limit=21&facet=true&facet.field=subject_era_facet&facet.pivot=format,language_facet&facet.query=pub_date:%5B1991%20TO%20*%5D&rows=15&sort=timestamp%20asc&start=0&wt=ruby
@@ -304,7 +304,7 @@ http_interactions:
       message: OK
     headers:
       Last-Modified:
-      - Fri, 16 Dec 2016 18:58:09 GMT
+      - Fri, 16 Dec 2016 21:13:15 GMT
       Etag:
       - '"MzAwMDAwMDAwMDAwMDAwMFNvbHI="'
       Content-Type:
@@ -314,7 +314,7 @@ http_interactions:
     body:
       encoding: ASCII-8BIT
       string: !binary |-
-        eydyZXNwb25zZUhlYWRlcic9Pnsnc3RhdHVzJz0+MCwnUVRpbWUnPT4yLCdw
+        eydyZXNwb25zZUhlYWRlcic9Pnsnc3RhdHVzJz0+MCwnUVRpbWUnPT4zLCdw
         YXJhbXMnPT57J2ZhY2V0LnF1ZXJ5Jz0+WydwdWJfZGF0ZTpbMjAxMSBUTyAq
         XScsJ3B1Yl9kYXRlOlsyMDA2IFRPICpdJywncHViX2RhdGU6WzE5OTEgVE8g
         Kl0nXSwnZi5zdWJqZWN0X3RvcGljX2ZhY2V0LmZhY2V0LmxpbWl0Jz0+JzIx
@@ -582,7 +582,7 @@ http_interactions:
         ZV9mYWNldCcsJ3ZhbHVlJz0+J0NoaW5lc2UnLCdjb3VudCc9PjF9XX1dfX19
         Cg==
     http_version: 
-  recorded_at: Fri, 16 Dec 2016 19:57:59 GMT
+  recorded_at: Fri, 16 Dec 2016 21:14:48 GMT
 - request:
     method: get
     uri: http://127.0.0.1:8983/solr/blacklight-core/select?f.language_facet.facet.limit=11&f.subject_topic_facet.facet.limit=21&facet=true&facet.field=subject_era_facet&facet.pivot=format,language_facet&facet.query=pub_date:%5B1991%20TO%20*%5D&rows=15&sort=timestamp%20asc&wt=ruby
@@ -596,7 +596,7 @@ http_interactions:
       message: OK
     headers:
       Last-Modified:
-      - Fri, 16 Dec 2016 18:58:09 GMT
+      - Fri, 16 Dec 2016 21:13:15 GMT
       Etag:
       - '"MzAwMDAwMDAwMDAwMDAwMFNvbHI="'
       Content-Type:
@@ -606,7 +606,7 @@ http_interactions:
     body:
       encoding: ASCII-8BIT
       string: !binary |-
-        eydyZXNwb25zZUhlYWRlcic9Pnsnc3RhdHVzJz0+MCwnUVRpbWUnPT4yLCdw
+        eydyZXNwb25zZUhlYWRlcic9Pnsnc3RhdHVzJz0+MCwnUVRpbWUnPT4zLCdw
         YXJhbXMnPT57J2ZhY2V0LnF1ZXJ5Jz0+WydwdWJfZGF0ZTpbMjAxMSBUTyAq
         XScsJ3B1Yl9kYXRlOlsyMDA2IFRPICpdJywncHViX2RhdGU6WzE5OTEgVE8g
         Kl0nXSwnZi5zdWJqZWN0X3RvcGljX2ZhY2V0LmZhY2V0LmxpbWl0Jz0+JzIx
@@ -873,7 +873,7 @@ http_interactions:
         JywnY291bnQnPT4yfSx7J2ZpZWxkJz0+J2xhbmd1YWdlX2ZhY2V0JywndmFs
         dWUnPT4nQ2hpbmVzZScsJ2NvdW50Jz0+MX1dfV19fX0K
     http_version: 
-  recorded_at: Fri, 16 Dec 2016 19:57:59 GMT
+  recorded_at: Fri, 16 Dec 2016 21:14:48 GMT
 - request:
     method: get
     uri: http://127.0.0.1:8983/solr/blacklight-core/select?f.language_facet.facet.limit=11&f.subject_topic_facet.facet.limit=21&facet=true&facet.field=subject_era_facet&facet.pivot=format,language_facet&facet.query=pub_date:%5B1991%20TO%20*%5D&rows=15&sort=timestamp%20asc&start=0&wt=ruby
@@ -887,7 +887,7 @@ http_interactions:
       message: OK
     headers:
       Last-Modified:
-      - Fri, 16 Dec 2016 18:58:09 GMT
+      - Fri, 16 Dec 2016 21:13:15 GMT
       Etag:
       - '"MzAwMDAwMDAwMDAwMDAwMFNvbHI="'
       Content-Type:
@@ -897,7 +897,7 @@ http_interactions:
     body:
       encoding: ASCII-8BIT
       string: !binary |-
-        eydyZXNwb25zZUhlYWRlcic9Pnsnc3RhdHVzJz0+MCwnUVRpbWUnPT4yLCdw
+        eydyZXNwb25zZUhlYWRlcic9Pnsnc3RhdHVzJz0+MCwnUVRpbWUnPT4zLCdw
         YXJhbXMnPT57J2ZhY2V0LnF1ZXJ5Jz0+WydwdWJfZGF0ZTpbMjAxMSBUTyAq
         XScsJ3B1Yl9kYXRlOlsyMDA2IFRPICpdJywncHViX2RhdGU6WzE5OTEgVE8g
         Kl0nXSwnZi5zdWJqZWN0X3RvcGljX2ZhY2V0LmZhY2V0LmxpbWl0Jz0+JzIx
@@ -1165,5 +1165,5 @@ http_interactions:
         ZV9mYWNldCcsJ3ZhbHVlJz0+J0NoaW5lc2UnLCdjb3VudCc9PjF9XX1dfX19
         Cg==
     http_version: 
-  recorded_at: Fri, 16 Dec 2016 19:57:59 GMT
+  recorded_at: Fri, 16 Dec 2016 21:14:48 GMT
 recorded_with: VCR 3.0.3
