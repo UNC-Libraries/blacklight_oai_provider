@@ -14,7 +14,7 @@ A Rails 4 application using Blacklight 6.
 
 Add
 
-    gem "blacklight_oai_provider"
+    gem 'blacklight_oai_provider', git: 'https://github.com/osulibraries/blacklight_oai_provider.git', branch: 'master'
 
 to your Gemfile and run `bundle install`.
 
