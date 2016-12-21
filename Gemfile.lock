@@ -3,7 +3,7 @@ PATH
   specs:
     blacklight_oai_provider (1.0.0)
       blacklight (>= 6.1)
-      oai
+      oai (~> 0.4.0)
       rails (>= 4.2)
 
 GEM

@@ -22,7 +22,7 @@ Gem::Specification.new do |s|
 
   s.add_dependency 'rails', '>= 4.2'
   s.add_dependency 'blacklight', '>= 6.1'
-  s.add_dependency 'oai'
+  s.add_dependency 'oai', '~> 0.4.0'
 
   s.add_development_dependency 'rspec'
   s.add_development_dependency 'rspec-rails', '~> 3.5'

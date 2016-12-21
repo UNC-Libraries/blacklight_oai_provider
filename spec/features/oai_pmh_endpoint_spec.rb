@@ -45,7 +45,7 @@ RSpec.feature 'OAI-PMH catalog endpoint' do
 
   describe 'GetRecord verb', :vcr do
     scenario 'displays a single record' do
-      identifier = "oai:localhost/00282214"
+      identifier = "oai:localhost:00282214"
 
       visit oai_provider_catalog_path(verb: 'GetRecord', metadataPrefix: format, identifier: identifier)
       expect(page).to have_selector('record', count: 1)
@@ -68,7 +68,7 @@ RSpec.feature 'OAI-PMH catalog endpoint' do
   end
 
   describe 'ListIdentifiers verb', :vcr do
-    let(:expected_ids) { %w(oai:localhost/2005553155 oai:localhost/00313831) }
+    let(:expected_ids) { %w(oai:localhost:2005553155 oai:localhost:00313831) }
 
     scenario 'lists identifiers for works' do
       visit oai_provider_catalog_path(verb: 'ListIdentifiers', metadataPrefix: format)

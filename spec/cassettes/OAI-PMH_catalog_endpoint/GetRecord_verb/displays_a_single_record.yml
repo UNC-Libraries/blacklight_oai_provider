@@ -13,7 +13,7 @@ http_interactions:
       message: OK
     headers:
       Last-Modified:
-      - Wed, 21 Dec 2016 16:15:52 GMT
+      - Wed, 21 Dec 2016 18:02:03 GMT
       Etag:
       - '"NjAwMDAwMDAwMDAwMDAwMFNvbHI="'
       Content-Type:
@@ -23,7 +23,7 @@ http_interactions:
     body:
       encoding: ASCII-8BIT
       string: !binary |-
-        eydyZXNwb25zZUhlYWRlcic9Pnsnc3RhdHVzJz0+MCwnUVRpbWUnPT41LCdw
+        eydyZXNwb25zZUhlYWRlcic9Pnsnc3RhdHVzJz0+MCwnUVRpbWUnPT4yLCdw
         YXJhbXMnPT57J2ZhY2V0LnF1ZXJ5Jz0+WydwdWJfZGF0ZTpbMjAxMSBUTyAq
         XScsJ3B1Yl9kYXRlOlsyMDA2IFRPICpdJywncHViX2RhdGU6WzE5OTEgVE8g
         Kl0nXSwnZi5zdWJqZWN0X3RvcGljX2ZhY2V0LmZhY2V0LmxpbWl0Jz0+JzIx
@@ -102,7 +102,7 @@ http_interactions:
         PidsYW5ndWFnZV9mYWNldCcsJ3ZhbHVlJz0+J0NoaW5lc2UnLCdjb3VudCc9
         PjF9XX1dfX19Cg==
     http_version: 
-  recorded_at: Wed, 21 Dec 2016 17:53:32 GMT
+  recorded_at: Wed, 21 Dec 2016 20:09:30 GMT
 - request:
     method: get
     uri: http://127.0.0.1:8983/solr/blacklight-core/select?f.language_facet.facet.limit=11&f.subject_topic_facet.facet.limit=21&facet=true&facet.field=subject_era_facet&facet.pivot=format,language_facet&facet.query=pub_date:%5B1991%20TO%20*%5D&fl=timestamp&rows=10&sort=timestamp%20desc&wt=ruby
@@ -116,7 +116,7 @@ http_interactions:
       message: OK
     headers:
       Last-Modified:
-      - Wed, 21 Dec 2016 16:15:52 GMT
+      - Wed, 21 Dec 2016 18:02:03 GMT
       Etag:
       - '"NjAwMDAwMDAwMDAwMDAwMFNvbHI="'
       Content-Type:
@@ -126,7 +126,7 @@ http_interactions:
     body:
       encoding: ASCII-8BIT
       string: !binary |-
-        eydyZXNwb25zZUhlYWRlcic9Pnsnc3RhdHVzJz0+MCwnUVRpbWUnPT40LCdw
+        eydyZXNwb25zZUhlYWRlcic9Pnsnc3RhdHVzJz0+MCwnUVRpbWUnPT4yLCdw
         YXJhbXMnPT57J2ZhY2V0LnF1ZXJ5Jz0+WydwdWJfZGF0ZTpbMjAxMSBUTyAq
         XScsJ3B1Yl9kYXRlOlsyMDA2IFRPICpdJywncHViX2RhdGU6WzE5OTEgVE8g
         Kl0nXSwnZi5zdWJqZWN0X3RvcGljX2ZhY2V0LmZhY2V0LmxpbWl0Jz0+JzIx
@@ -205,7 +205,7 @@ http_interactions:
         PT4nbGFuZ3VhZ2VfZmFjZXQnLCd2YWx1ZSc9PidDaGluZXNlJywnY291bnQn
         PT4xfV19XX19fQo=
     http_version: 
-  recorded_at: Wed, 21 Dec 2016 17:53:32 GMT
+  recorded_at: Wed, 21 Dec 2016 20:09:30 GMT
 - request:
     method: get
     uri: http://127.0.0.1:8983/solr/blacklight-core/select?id=00282214&qt=document&wt=ruby
@@ -219,7 +219,7 @@ http_interactions:
       message: OK
     headers:
       Last-Modified:
-      - Wed, 21 Dec 2016 16:15:52 GMT
+      - Wed, 21 Dec 2016 18:02:03 GMT
       Etag:
       - '"NjAwMDAwMDAwMDAwMDAwMFNvbHI="'
       Content-Type:
@@ -299,5 +299,5 @@ http_interactions:
         aCBNdWjMo2FtbWFkLiddLCdsYW5ndWFnZV9mYWNldCc9PlsnVXJkdSddLCd0
         aW1lc3RhbXAnPT4nMjAxNC0wMi0wNFQxODo0Mjo1My4wNTZaJ31dfX0K
     http_version: 
-  recorded_at: Wed, 21 Dec 2016 17:53:32 GMT
+  recorded_at: Wed, 21 Dec 2016 20:09:30 GMT
 recorded_with: VCR 3.0.3
