@@ -7,13 +7,13 @@ Rails.application.load_tasks
 
 require 'solr_wrapper/rake_task' unless Rails.env.production?
 
-namespace :blacklight do
-  namespace :index do
+namespace :spec do
+  namespace :solr do
     desc "Put sample data into solr"
-    task :seed => [:environment]  do
+    task :index => [:environment]  do
       require 'yaml'
 
-      docs = YAML.load(File.open(File.join(Rails.root, 'solr', 'sample_solr_documents.yml')))
+      docs = YAML.load(File.open(File.expand_path('../../fixtures/sample_solr_documents.yml', __FILE__)))
       conn = Blacklight.default_index.connection
       conn.add docs
       conn.commit

@@ -43,6 +43,16 @@ RSpec.feature 'OAI-PMH catalog endpoint' do
     end
   end
 
+  describe 'GetRecord verb', :vcr do
+    scenario 'displays a single record' do
+      identifier = "oai:localhost/00282214"
+
+      visit oai_provider_catalog_path(verb: 'GetRecord', metadataPrefix: format, identifier: identifier)
+      expect(page).to have_selector('record', count: 1)
+      expect(page).to have_content(identifier)
+    end
+  end
+
   describe 'ListSets verb' do
     scenario 'shows that no sets exist' do
       visit oai_provider_catalog_path(verb: 'ListSets')

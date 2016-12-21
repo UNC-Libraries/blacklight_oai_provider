@@ -134,7 +134,7 @@ The specs use [VCR](https://github.com/vcr/vcr) to play back HTTP responses from
 Then, in another terminal, seed the test data into Solr:
 
     $ cd spec/dummy
-    $ bundle exec rake blacklight:index:seed
+    $ bundle exec rake spec:solr:index
 
 To view the dummy application in your browser, chnage to the application root and run rails from the bin script:
 
