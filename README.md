@@ -114,15 +114,11 @@ The "provider" configuration is documented as part of the ruby-oai gem at [http:
 
 There are currently a few basic tests, but contributions are welcome!
 
-To run the test suite, you'll need to install a few dependencies. First, install [PhantomJS](http://phantomjs.org). macOS users can install PhantomJS using [Homebrew](http://brew.sh):
-
-    $ brew install phantomjs
-
-Next, install all development gems using Bundler:
+To run the test suite, you'll need to install all development dependencies using Bundler:
 
     $ bundle install
 
-Finally, run the tests using RSpec:
+Then, run the tests using RSpec:
 
     $ bundle exec rspec
 
