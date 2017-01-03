@@ -55,7 +55,7 @@ RSpec.describe 'OAI-PMH catalog endpoint' do
 
         expect(records.count).to be 5
       end
- 
+
       scenario 'the last page of records provides an empty resumption token' do
         params = { verb: 'ListRecords', resumptionToken: "oai_dc.f(1970-01-01T00:00:00Z).u(2016-12-16T15:40:34Z):25" }
 

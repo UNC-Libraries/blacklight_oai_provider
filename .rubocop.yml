@@ -58,3 +58,6 @@ RSpec/MultipleExpectations:
 
 RSpec/NamedSubject:
   Enabled: false
+
+RSpec/DescribeClass:
+  Enabled: false
