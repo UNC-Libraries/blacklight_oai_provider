@@ -41,7 +41,7 @@ Style/Documentation:
 
 Metrics/AbcSize:
   Enabled: true
-  Max: 20
+  Max: 22
 
 Metrics/MethodLength:
   Enabled: true

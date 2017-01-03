@@ -9,9 +9,8 @@ module BlacklightOaiProvider
       @options = defaults.merge options
 
       @limit = @options[:limit]
-      @doument_model = @controller.blacklight_config.document_model || ::SolrDocument
       @timestamp_field = @options[:timestamp_method] || @options[:timestamp]
-      @timestamp_query_field = @options[:timestamp_field] || @doument_model.timestamp_field
+      @timestamp_query_field = @options[:timestamp_field] || @options[:timestamp]
     end
 
     def sets; end

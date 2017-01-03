@@ -41,23 +41,37 @@ If you want to do customize the installation, instead you may:
 
     concern :oai_provider, BlacklightOaiProvider::Routes::Provider.new
 
+## Configuration
+
+While the plugin provides some sensible (albeit generic) defaults out of the box, you probably will want to customize the OAI provider configuration. All configuration parameters are optional.
+
+In `app/controllers/catalog_controller.rb`
+
+    configure_blacklight do |config|
+      config.oai = {
+        provider: {
+          repository_name: 'My Test Repository',
+          repository_url: 'http://localhost',
+          record_prefix: 'example.com',
+          admin_email: 'root@localhost'
+        },
+        document: {
+          limit: 25
+        }
+      }
+    end
+
+The "provider" configuration is documented as part of the ruby-oai gem at [http://oai.rubyforge.org/](http://oai.rubyforge.org/)
+
 ### Timestamps
 
 OAI-PMH requires a timestamp field for all records, so your Solr index should include an appropriate field. By default, the name of this field is simply "timestamp". The OAI SolrDocument behavior adds methods to the`SolrDocument` class to fetch timestamp data.
-
-If the Solr field holding your timestamp is not called "timestamp", you should override the `timestamp_field` class method to return the correct field name, ie:
-
-    class SolrDocument
-      def self.timestamp_field
-        'date_modified'
-      end
-    end
 
 The `timestamp` method is expected to return a Ruby `Time` object. You can override this method if necessary to perform extra processing:
 
     class SolrDocument
       def timestamp
-        Time.parse message_my_data(fetch(self.class.timestamp_field))
+        Time.parse message_my_data(fetch('timestamp'))
       end
     end
 
@@ -86,29 +100,15 @@ In order to provide metadata to the OAI-PMH emdpoint, your `SolrDocument` will n
       # ...
     end
 
-## Configuration
+### SolrDocument Wrapper
 
-While the plugin provides some sensible (albeit generic) defaults out of the box, you probably will want to customize the OAI provider configuration.
+This gem provides an OAI wrapper model for you application's `SolrDocument` class at `lib/blacklight_oai_provider/solr_document_wrapper.rb`. If needed, you can provide your own wrapper class in the Blacklight OAI configuration:
 
-### For Blacklight 6.x.x
-
-in `app/controllers/catalog_controller.rb`
-
-    configure_blacklight do |config|
-      config.oai = {
-        provider: {
-          repository_name: 'Test',
-          repository_url: 'http://localhost',
-          record_prefix: '',
-          admin_email: 'root@localhost'
-        },
-        document: {
-          limit: 25
-        }
+    config.oai = {
+      provider: {
+        wrapper_class: '::MySolrDocumentWrapper'
       }
-    end
-
-The "provider" configuration is documented as part of the ruby-oai gem at [http://oai.rubyforge.org/](http://oai.rubyforge.org/)
+    }
 
 ## Tests
 
