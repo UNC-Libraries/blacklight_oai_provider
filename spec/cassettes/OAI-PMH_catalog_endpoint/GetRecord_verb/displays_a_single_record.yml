@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: http://127.0.0.1:8983/solr/blacklight-core/select?f.language_facet.facet.limit=11&f.subject_topic_facet.facet.limit=21&facet=true&facet.field=subject_era_facet&facet.pivot=format,language_facet&facet.query=pub_date:%5B1991%20TO%20*%5D&fl=timestamp&rows=10&sort=timestamp%20asc&wt=ruby
+    uri: http://127.0.0.1:8983/solr/blacklight-core/select?f.language_facet.facet.limit=11&f.subject_topic_facet.facet.limit=21&facet=true&facet.field=subject_era_facet&facet.pivot=format,language_facet&facet.query=pub_date:%5B1992%20TO%20*%5D&fl=timestamp&rows=10&sort=timestamp%20asc&wt=ruby
     body:
       encoding: US-ASCII
       string: ''
@@ -13,7 +13,7 @@ http_interactions:
       message: OK
     headers:
       Last-Modified:
-      - Wed, 21 Dec 2016 18:02:03 GMT
+      - Tue, 03 Jan 2017 14:27:07 GMT
       Etag:
       - '"NjAwMDAwMDAwMDAwMDAwMFNvbHI="'
       Content-Type:
@@ -23,9 +23,9 @@ http_interactions:
     body:
       encoding: ASCII-8BIT
       string: !binary |-
-        eydyZXNwb25zZUhlYWRlcic9Pnsnc3RhdHVzJz0+MCwnUVRpbWUnPT4yLCdw
-        YXJhbXMnPT57J2ZhY2V0LnF1ZXJ5Jz0+WydwdWJfZGF0ZTpbMjAxMSBUTyAq
-        XScsJ3B1Yl9kYXRlOlsyMDA2IFRPICpdJywncHViX2RhdGU6WzE5OTEgVE8g
+        eydyZXNwb25zZUhlYWRlcic9Pnsnc3RhdHVzJz0+MCwnUVRpbWUnPT40LCdw
+        YXJhbXMnPT57J2ZhY2V0LnF1ZXJ5Jz0+WydwdWJfZGF0ZTpbMjAxMiBUTyAq
+        XScsJ3B1Yl9kYXRlOlsyMDA3IFRPICpdJywncHViX2RhdGU6WzE5OTIgVE8g
         Kl0nXSwnZi5zdWJqZWN0X3RvcGljX2ZhY2V0LmZhY2V0LmxpbWl0Jz0+JzIx
         JywnZmFjZXQuZmllbGQnPT5bJ2Zvcm1hdCcsJ3shZXg9cHViX2RhdGVfc2lu
         Z2xlfXB1Yl9kYXRlJywnc3ViamVjdF90b3BpY19mYWNldCcsJ2xhbmd1YWdl
@@ -45,8 +45,8 @@ http_interactions:
         PicyMDE0LTAyLTAzVDE4OjQyOjUzLjA1NlonfSx7J3RpbWVzdGFtcCc9Picy
         MDE0LTAyLTAzVDE4OjQyOjUzLjA1NlonfSx7J3RpbWVzdGFtcCc9PicyMDE0
         LTAyLTAzVDE4OjQyOjUzLjA1NlonfV19LCdmYWNldF9jb3VudHMnPT57J2Zh
-        Y2V0X3F1ZXJpZXMnPT57J3B1Yl9kYXRlOlsyMDExIFRPICpdJz0+MCwncHVi
-        X2RhdGU6WzIwMDYgVE8gKl0nPT42LCdwdWJfZGF0ZTpbMTk5MSBUTyAqXSc9
+        Y2V0X3F1ZXJpZXMnPT57J3B1Yl9kYXRlOlsyMDEyIFRPICpdJz0+MCwncHVi
+        X2RhdGU6WzIwMDcgVE8gKl0nPT41LCdwdWJfZGF0ZTpbMTk5MiBUTyAqXSc9
         PjE3fSwnZmFjZXRfZmllbGRzJz0+eydmb3JtYXQnPT5bJ0Jvb2snLDMwXSwn
         cHViX2RhdGUnPT5bJzIwMDgnLDQsJzE5NzYnLDIsJzE5ODYnLDIsJzE5OTAn
         LDIsJzE5OTcnLDIsJzIwMDAnLDIsJzE5NDEnLDEsJzE5NDYnLDEsJzE5NTIn
@@ -102,10 +102,10 @@ http_interactions:
         PidsYW5ndWFnZV9mYWNldCcsJ3ZhbHVlJz0+J0NoaW5lc2UnLCdjb3VudCc9
         PjF9XX1dfX19Cg==
     http_version: 
-  recorded_at: Wed, 21 Dec 2016 20:09:30 GMT
+  recorded_at: Tue, 03 Jan 2017 14:27:44 GMT
 - request:
     method: get
-    uri: http://127.0.0.1:8983/solr/blacklight-core/select?f.language_facet.facet.limit=11&f.subject_topic_facet.facet.limit=21&facet=true&facet.field=subject_era_facet&facet.pivot=format,language_facet&facet.query=pub_date:%5B1991%20TO%20*%5D&fl=timestamp&rows=10&sort=timestamp%20desc&wt=ruby
+    uri: http://127.0.0.1:8983/solr/blacklight-core/select?f.language_facet.facet.limit=11&f.subject_topic_facet.facet.limit=21&facet=true&facet.field=subject_era_facet&facet.pivot=format,language_facet&facet.query=pub_date:%5B1992%20TO%20*%5D&fl=timestamp&rows=10&sort=timestamp%20desc&wt=ruby
     body:
       encoding: US-ASCII
       string: ''
@@ -116,7 +116,7 @@ http_interactions:
       message: OK
     headers:
       Last-Modified:
-      - Wed, 21 Dec 2016 18:02:03 GMT
+      - Tue, 03 Jan 2017 14:27:07 GMT
       Etag:
       - '"NjAwMDAwMDAwMDAwMDAwMFNvbHI="'
       Content-Type:
@@ -126,9 +126,9 @@ http_interactions:
     body:
       encoding: ASCII-8BIT
       string: !binary |-
-        eydyZXNwb25zZUhlYWRlcic9Pnsnc3RhdHVzJz0+MCwnUVRpbWUnPT4yLCdw
-        YXJhbXMnPT57J2ZhY2V0LnF1ZXJ5Jz0+WydwdWJfZGF0ZTpbMjAxMSBUTyAq
-        XScsJ3B1Yl9kYXRlOlsyMDA2IFRPICpdJywncHViX2RhdGU6WzE5OTEgVE8g
+        eydyZXNwb25zZUhlYWRlcic9Pnsnc3RhdHVzJz0+MCwnUVRpbWUnPT40LCdw
+        YXJhbXMnPT57J2ZhY2V0LnF1ZXJ5Jz0+WydwdWJfZGF0ZTpbMjAxMiBUTyAq
+        XScsJ3B1Yl9kYXRlOlsyMDA3IFRPICpdJywncHViX2RhdGU6WzE5OTIgVE8g
         Kl0nXSwnZi5zdWJqZWN0X3RvcGljX2ZhY2V0LmZhY2V0LmxpbWl0Jz0+JzIx
         JywnZmFjZXQuZmllbGQnPT5bJ2Zvcm1hdCcsJ3shZXg9cHViX2RhdGVfc2lu
         Z2xlfXB1Yl9kYXRlJywnc3ViamVjdF90b3BpY19mYWNldCcsJ2xhbmd1YWdl
@@ -148,8 +148,8 @@ http_interactions:
         PT4nMjAxNC0wMi0wNFQxODo0Mjo1My4wNTZaJ30seyd0aW1lc3RhbXAnPT4n
         MjAxNC0wMi0wM1QxODo0Mjo1My4wNTZaJ30seyd0aW1lc3RhbXAnPT4nMjAx
         NC0wMi0wM1QxODo0Mjo1My4wNTZaJ31dfSwnZmFjZXRfY291bnRzJz0+eydm
-        YWNldF9xdWVyaWVzJz0+eydwdWJfZGF0ZTpbMjAxMSBUTyAqXSc9PjAsJ3B1
-        Yl9kYXRlOlsyMDA2IFRPICpdJz0+NiwncHViX2RhdGU6WzE5OTEgVE8gKl0n
+        YWNldF9xdWVyaWVzJz0+eydwdWJfZGF0ZTpbMjAxMiBUTyAqXSc9PjAsJ3B1
+        Yl9kYXRlOlsyMDA3IFRPICpdJz0+NSwncHViX2RhdGU6WzE5OTIgVE8gKl0n
         PT4xN30sJ2ZhY2V0X2ZpZWxkcyc9PnsnZm9ybWF0Jz0+WydCb29rJywzMF0s
         J3B1Yl9kYXRlJz0+WycyMDA4Jyw0LCcxOTc2JywyLCcxOTg2JywyLCcxOTkw
         JywyLCcxOTk3JywyLCcyMDAwJywyLCcxOTQxJywxLCcxOTQ2JywxLCcxOTUy
@@ -205,7 +205,7 @@ http_interactions:
         PT4nbGFuZ3VhZ2VfZmFjZXQnLCd2YWx1ZSc9PidDaGluZXNlJywnY291bnQn
         PT4xfV19XX19fQo=
     http_version: 
-  recorded_at: Wed, 21 Dec 2016 20:09:30 GMT
+  recorded_at: Tue, 03 Jan 2017 14:27:44 GMT
 - request:
     method: get
     uri: http://127.0.0.1:8983/solr/blacklight-core/select?id=00282214&qt=document&wt=ruby
@@ -219,7 +219,7 @@ http_interactions:
       message: OK
     headers:
       Last-Modified:
-      - Wed, 21 Dec 2016 18:02:03 GMT
+      - Tue, 03 Jan 2017 14:27:07 GMT
       Etag:
       - '"NjAwMDAwMDAwMDAwMDAwMFNvbHI="'
       Content-Type:
@@ -299,5 +299,5 @@ http_interactions:
         aCBNdWjMo2FtbWFkLiddLCdsYW5ndWFnZV9mYWNldCc9PlsnVXJkdSddLCd0
         aW1lc3RhbXAnPT4nMjAxNC0wMi0wNFQxODo0Mjo1My4wNTZaJ31dfX0K
     http_version: 
-  recorded_at: Wed, 21 Dec 2016 20:09:30 GMT
+  recorded_at: Tue, 03 Jan 2017 14:27:44 GMT
 recorded_with: VCR 3.0.3

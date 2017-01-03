@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: http://127.0.0.1:8983/solr/blacklight-core/select?f.language_facet.facet.limit=11&f.subject_topic_facet.facet.limit=21&facet=true&facet.field=subject_era_facet&facet.pivot=format,language_facet&facet.query=pub_date:%5B1991%20TO%20*%5D&fl=timestamp&rows=15&sort=timestamp%20desc&wt=ruby
+    uri: http://127.0.0.1:8983/solr/blacklight-core/select?f.language_facet.facet.limit=11&f.subject_topic_facet.facet.limit=21&facet=true&facet.field=subject_era_facet&facet.pivot=format,language_facet&facet.query=pub_date:%5B1992%20TO%20*%5D&fl=timestamp&rows=15&sort=timestamp%20desc&wt=ruby
     body:
       encoding: US-ASCII
       string: ''
@@ -13,9 +13,9 @@ http_interactions:
       message: OK
     headers:
       Last-Modified:
-      - Fri, 16 Dec 2016 21:13:15 GMT
+      - Tue, 03 Jan 2017 14:27:07 GMT
       Etag:
-      - '"MzAwMDAwMDAwMDAwMDAwMFNvbHI="'
+      - '"NjAwMDAwMDAwMDAwMDAwMFNvbHI="'
       Content-Type:
       - text/plain;charset=utf-8
       Content-Length:
@@ -23,9 +23,9 @@ http_interactions:
     body:
       encoding: ASCII-8BIT
       string: !binary |-
-        eydyZXNwb25zZUhlYWRlcic9Pnsnc3RhdHVzJz0+MCwnUVRpbWUnPT4zLCdw
-        YXJhbXMnPT57J2ZhY2V0LnF1ZXJ5Jz0+WydwdWJfZGF0ZTpbMjAxMSBUTyAq
-        XScsJ3B1Yl9kYXRlOlsyMDA2IFRPICpdJywncHViX2RhdGU6WzE5OTEgVE8g
+        eydyZXNwb25zZUhlYWRlcic9Pnsnc3RhdHVzJz0+MCwnUVRpbWUnPT42LCdw
+        YXJhbXMnPT57J2ZhY2V0LnF1ZXJ5Jz0+WydwdWJfZGF0ZTpbMjAxMiBUTyAq
+        XScsJ3B1Yl9kYXRlOlsyMDA3IFRPICpdJywncHViX2RhdGU6WzE5OTIgVE8g
         Kl0nXSwnZi5zdWJqZWN0X3RvcGljX2ZhY2V0LmZhY2V0LmxpbWl0Jz0+JzIx
         JywnZmFjZXQuZmllbGQnPT5bJ2Zvcm1hdCcsJ3shZXg9cHViX2RhdGVfc2lu
         Z2xlfXB1Yl9kYXRlJywnc3ViamVjdF90b3BpY19mYWNldCcsJ2xhbmd1YWdl
@@ -50,8 +50,8 @@ http_interactions:
         ODo0Mjo1My4wNTZaJ30seyd0aW1lc3RhbXAnPT4nMjAxNC0wMi0wM1QxODo0
         Mjo1My4wNTZaJ30seyd0aW1lc3RhbXAnPT4nMjAxNC0wMi0wM1QxODo0Mjo1
         My4wNTZaJ31dfSwnZmFjZXRfY291bnRzJz0+eydmYWNldF9xdWVyaWVzJz0+
-        eydwdWJfZGF0ZTpbMjAxMSBUTyAqXSc9PjAsJ3B1Yl9kYXRlOlsyMDA2IFRP
-        ICpdJz0+NiwncHViX2RhdGU6WzE5OTEgVE8gKl0nPT4xN30sJ2ZhY2V0X2Zp
+        eydwdWJfZGF0ZTpbMjAxMiBUTyAqXSc9PjAsJ3B1Yl9kYXRlOlsyMDA3IFRP
+        ICpdJz0+NSwncHViX2RhdGU6WzE5OTIgVE8gKl0nPT4xN30sJ2ZhY2V0X2Zp
         ZWxkcyc9PnsnZm9ybWF0Jz0+WydCb29rJywzMF0sJ3B1Yl9kYXRlJz0+Wycy
         MDA4Jyw0LCcxOTc2JywyLCcxOTg2JywyLCcxOTkwJywyLCcxOTk3JywyLCcy
         MDAwJywyLCcxOTQxJywxLCcxOTQ2JywxLCcxOTUyJywxLCcxOTYyJywxLCcx
@@ -106,5 +106,5 @@ http_interactions:
         J1J1c3NpYW4nLCdjb3VudCc9PjJ9LHsnZmllbGQnPT4nbGFuZ3VhZ2VfZmFj
         ZXQnLCd2YWx1ZSc9PidDaGluZXNlJywnY291bnQnPT4xfV19XX19fQo=
     http_version: 
-  recorded_at: Fri, 16 Dec 2016 21:14:48 GMT
+  recorded_at: Tue, 03 Jan 2017 14:27:43 GMT
 recorded_with: VCR 3.0.3

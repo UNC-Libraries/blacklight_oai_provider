@@ -34,7 +34,7 @@ module BlacklightOaiProvider
       if :all == selector
         response = search_repository
         if @limit && response.total > @limit
-          return select_partial(OAI::Provider::ResumptionToken.new(options.merge(last: 0)))
+          return select_partial(OAI::Provider::ResumptionToken.new(options.merge(last: 0)), response.documents)
         end
         response.documents
       else
@@ -43,11 +43,8 @@ module BlacklightOaiProvider
       end
     end
 
-    def select_partial(token)
-      records = search_repository(start: token.last).documents
-
+    def select_partial(token, records)
       raise ::OAI::ResumptionTokenException unless records
-
       OAI::Provider::PartialResult.new(records, token.next(token.last + @limit))
     end
 
@@ -55,7 +52,13 @@ module BlacklightOaiProvider
       raise ::OAI::ResumptionTokenException unless @limit
 
       token = OAI::Provider::ResumptionToken.parse(token_string)
-      select_partial(token)
+      response = search_repository(start: token.last)
+
+      if response.last_page?
+        token = BlacklightOaiProvider::EmptyResumptionToken.new(last: token.last)
+      end
+
+      select_partial(token, response.documents)
     end
 
     private
