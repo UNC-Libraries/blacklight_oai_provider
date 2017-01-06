@@ -17,7 +17,7 @@ module BlacklightOaiProvider
     end
 
     def list_sets(options = {})
-      ListSetsResponse.new(self.class, options).to_xml
+      Response::ListSets.new(self.class, options).to_xml
     end
   end
 end

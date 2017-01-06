@@ -17,4 +17,8 @@ module BlacklightOaiProvider
   def self.safe_arr_add(array, element)
     array << element unless array.include?(element)
   end
+
+  module Response
+    autoload :ListSets, 'blacklight_oai_provider/response/list_sets'
+  end
 end

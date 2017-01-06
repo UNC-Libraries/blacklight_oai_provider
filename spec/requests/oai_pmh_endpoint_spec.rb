@@ -155,6 +155,11 @@ RSpec.describe 'OAI-PMH catalog endpoint' do
         expect(sets.count).to be 2
       end
 
+      scenario 'shows the correct verb' do
+        get oai_provider_catalog_path(verb: 'ListSets')
+        expect(response.body).to include('verb="ListSets"')
+      end
+
       context 'where sets include descriptions' do
         let(:set_description) { 'My set description' }
         let(:all_sets) do
