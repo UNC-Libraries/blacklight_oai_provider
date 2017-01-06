@@ -144,13 +144,34 @@ RSpec.describe 'OAI-PMH catalog endpoint' do
     end
 
     context 'with set configuration' do
-      let(:all_sets) { [OpenStruct.new(spec: 'foo', name: 'Foo'), OpenStruct.new(spec: 'bar', name: 'Bar')] }
+      let(:all_sets) do
+        [OpenStruct.new(spec: 'foo', name: 'Foo'), OpenStruct.new(spec: 'bar', name: 'Bar')]
+      end
       let(:document_config) { { sets: -> { all_sets } } }
 
       scenario 'shows all sets' do
         get oai_provider_catalog_path(verb: 'ListSets')
         sets = xpath '//xmlns:set'
         expect(sets.count).to be 2
+      end
+
+      context 'where sets include descriptions' do
+        let(:set_description) { 'My set description' }
+        let(:all_sets) do
+          [OpenStruct.new(spec: 'foo', name: 'Foo', description: set_description),
+           OpenStruct.new(spec: 'bar', name: 'Bar')]
+        end
+
+        scenario 'shows the set description object' do
+          get oai_provider_catalog_path(verb: 'ListSets')
+          descriptions = xpath '//xmlns:set/xmlns:setDescription/oai_dc:dc/dc:description',
+                               'xmlns' => 'http://www.openarchives.org/OAI/2.0/',
+                               'dc' => 'http://purl.org/dc/elements/1.1/',
+                               'oai_dc' => 'http://www.openarchives.org/OAI/2.0/oai_dc/'
+
+          expect(descriptions.count).to be 1
+          expect(response.body).to include(set_description)
+        end
       end
     end
   end
@@ -171,7 +192,7 @@ RSpec.describe 'OAI-PMH catalog endpoint' do
     end
   end
 
-  def xpath(str)
-    Nokogiri::XML(response.body).xpath(str)
+  def xpath(str, opts = nil)
+    Nokogiri::XML(response.body).xpath(str, opts)
   end
 end

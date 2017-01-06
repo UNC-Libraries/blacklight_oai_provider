@@ -15,5 +15,9 @@ module BlacklightOaiProvider
         self.class.send k, v
       end
     end
+
+    def list_sets(options = {})
+      ListSetsResponse.new(self.class, options).to_xml
+    end
   end
 end
