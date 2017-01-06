@@ -9,8 +9,7 @@ module BlacklightOaiProvider
       options[:provider][:repository_name] ||= controller.view_context.send(:application_name)
       options[:provider][:repository_url] ||= controller.view_context.send(:oai_provider_catalog_url)
 
-      wrapper_class = options[:provider].delete(:wrapper_class).try(:constantize) || SolrDocumentWrapper
-      self.class.model = wrapper_class.new(controller, options[:document])
+      self.class.model = SolrDocumentWrapper.new(controller, options[:document])
 
       options[:provider].each do |k, v|
         self.class.send k, v

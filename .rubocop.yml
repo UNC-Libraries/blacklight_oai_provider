@@ -41,11 +41,15 @@ Style/Documentation:
 
 Metrics/AbcSize:
   Enabled: true
-  Max: 22
+  Max: 24
 
 Metrics/MethodLength:
   Enabled: true
   Max: 20
+
+Metrics/CyclomaticComplexity:
+  Enabled: true
+  Max: 7
 
 ##################### RSpec ##################################
 
@@ -61,3 +65,7 @@ RSpec/NamedSubject:
 
 RSpec/DescribeClass:
   Enabled: false
+
+RSpec/ExampleLength:
+  Enabled: true
+  Max: 10

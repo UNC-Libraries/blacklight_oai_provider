@@ -8,7 +8,7 @@ RSpec.describe BlacklightOaiProvider::SolrDocumentWrapper do
 
   describe "#sets" do
     it 'returns nil to indicate sets are not supported' do
-      expect(subject.sets).to be_nil
+      expect { subject.sets }.to raise_error(::OAI::SetException)
     end
   end
 

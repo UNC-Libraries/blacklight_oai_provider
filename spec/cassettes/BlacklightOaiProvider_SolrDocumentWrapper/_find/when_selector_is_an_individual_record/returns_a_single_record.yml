@@ -13,7 +13,7 @@ http_interactions:
       message: OK
     headers:
       Last-Modified:
-      - Tue, 03 Jan 2017 14:27:07 GMT
+      - Fri, 06 Jan 2017 02:49:16 GMT
       Etag:
       - '"NjAwMDAwMDAwMDAwMDAwMFNvbHI="'
       Content-Type:
@@ -23,7 +23,7 @@ http_interactions:
     body:
       encoding: ASCII-8BIT
       string: !binary |-
-        eydyZXNwb25zZUhlYWRlcic9Pnsnc3RhdHVzJz0+MCwnUVRpbWUnPT4yLCdw
+        eydyZXNwb25zZUhlYWRlcic9Pnsnc3RhdHVzJz0+MCwnUVRpbWUnPT4wLCdw
         YXJhbXMnPT57J3EnPT4neyF0ZXJtIGY9aWQgdj0kaWR9JywncXQnPT4nZG9j
         dW1lbnQnLCdlY2hvUGFyYW1zJz0+J2FsbCcsJ2ZsJz0+JyonLCdpZCc9Picy
         MDA1NTUzMTU1Jywncm93cyc9PicxJywnd3QnPT4ncnVieSd9fSwncmVzcG9u
@@ -290,5 +290,5 @@ http_interactions:
         15zXmSddLCdsYW5ndWFnZV9mYWNldCc9PlsnSGVicmV3J10sJ3RpbWVzdGFt
         cCc9PicyMDE0LTAxLTIyVDE4OjQyOjUzLjA1NlonfV19fQo=
     http_version: 
-  recorded_at: Tue, 03 Jan 2017 14:27:43 GMT
+  recorded_at: Fri, 06 Jan 2017 03:09:57 GMT
 recorded_with: VCR 3.0.3

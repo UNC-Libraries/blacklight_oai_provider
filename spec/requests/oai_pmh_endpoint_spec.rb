@@ -4,7 +4,9 @@ RSpec.describe 'OAI-PMH catalog endpoint' do
   let(:repo_name) { 'My Test Repository' }
   let(:format) { 'oai_dc' }
   let(:limit) { 10 }
-  let(:oai_config) { { provider: { repository_name: repo_name }, document: { limit: limit } } }
+  let(:provider_config) { { repository_name: repo_name } }
+  let(:document_config) { { limit: limit } }
+  let(:oai_config) { { provider: provider_config, document: document_config } }
 
   before do
     CatalogController.configure_blacklight do |config|
@@ -35,7 +37,7 @@ RSpec.describe 'OAI-PMH catalog endpoint' do
     end
 
     context 'when number of records exceeds document limit' do
-      let(:oai_config) { { provider: { repository_name: repo_name }, document: { limit: 25 } } }
+      let(:document_config) { { limit: 25 } }
 
       scenario 'a resumption token is provided' do
         params = { verb: 'ListRecords', metadataPrefix: format }
@@ -66,6 +68,59 @@ RSpec.describe 'OAI-PMH catalog endpoint' do
         expect(token.text).to be_empty
       end
     end
+
+    context 'with a set' do
+      let(:document_config) { { set_query: ->(spec) { "language_facet:#{spec.sub('language:', '')}" } } }
+
+      scenario 'only records from the set are returned' do
+        params = { verb: 'ListRecords', metadataPrefix: format, set: 'language:Japanese' }
+
+        get oai_provider_catalog_path(params)
+        records = xpath '//xmlns:record'
+
+        expect(records.count).to be 2
+      end
+    end
+
+    context 'with a from date' do
+      scenario 'only records with a timestamp after the date are shown' do
+        params = { verb: 'ListRecords', metadataPrefix: format, from: '2014-05-01' }
+
+        get oai_provider_catalog_path(params)
+        records = xpath '//xmlns:record'
+
+        expect(records.count).to be 2
+        expect(response.body).to include('2014-05-13T18:42:53Z')
+        expect(response.body).not_to include('2014-01-22T18:42:53Z')
+      end
+
+      context 'and an until date' do
+        scenario 'shows records between the dates' do
+          params = { verb: 'ListRecords', metadataPrefix: format, from: '2014-02-05', until: '2014-10-02' }
+
+          get oai_provider_catalog_path(params)
+          records = xpath '//xmlns:record'
+
+          expect(records.count).to be 6
+          expect(response.body).to include('2014-05-13T18:42:53Z')
+          expect(response.body).not_to include('2014-01-22T18:42:53Z')
+          expect(response.body).not_to include('2014-10-10T18:42:53Z')
+        end
+      end
+    end
+
+    context 'with an until date' do
+      scenario 'only records with a timestamp before the date are shown' do
+        params = { verb: 'ListRecords', metadataPrefix: format, until: '2014-02-01' }
+
+        get oai_provider_catalog_path(params)
+        records = xpath '//xmlns:record'
+
+        expect(records.count).to be 1
+        expect(response.body).to include('2014-01-22T18:42:53Z')
+        expect(response.body).not_to include('2014-02-03T18:42:53Z')
+      end
+    end
   end
 
   describe 'GetRecord verb', :vcr do
@@ -81,9 +136,22 @@ RSpec.describe 'OAI-PMH catalog endpoint' do
   end
 
   describe 'ListSets verb' do
-    scenario 'shows that no sets exist' do
-      get oai_provider_catalog_path(verb: 'ListSets')
-      expect(response.body).to include('This repository does not support sets')
+    context 'without set configuration' do
+      scenario 'shows that no sets exist' do
+        get oai_provider_catalog_path(verb: 'ListSets')
+        expect(response.body).to include('This repository does not support sets')
+      end
+    end
+
+    context 'with set configuration' do
+      let(:all_sets) { [OpenStruct.new(spec: 'foo', name: 'Foo'), OpenStruct.new(spec: 'bar', name: 'Bar')] }
+      let(:document_config) { { sets: -> { all_sets } } }
+
+      scenario 'shows all sets' do
+        get oai_provider_catalog_path(verb: 'ListSets')
+        sets = xpath '//xmlns:set'
+        expect(sets.count).to be 2
+      end
     end
   end
 
