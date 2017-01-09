@@ -6,12 +6,16 @@ module BlacklightOaiProvider
       defaults = {
         timestamp: 'timestamp',
         limit: 15,
-        sets: -> { sets_not_supported },
-        set_query: ->(_spec) { sets_not_supported }
+        set_class: 'BlacklightOaiProvider::Set'
       }
 
       @options = defaults.merge options
       @controller = controller
+
+      @set = @options[:set_class].constantize
+      @set.repository = @controller.repository
+      @set.search_builder = @controller.search_builder
+      @set.fields = @options[:set_fields]
 
       @limit = @options[:limit].to_i
       @timestamp_field = @options[:timestamp_method] || @options[:timestamp]
@@ -19,7 +23,7 @@ module BlacklightOaiProvider
     end
 
     def sets
-      @options[:sets].call
+      @set.all
     end
 
     def earliest
@@ -78,13 +82,9 @@ module BlacklightOaiProvider
       query = @controller.search_builder.with(@controller.params).merge(params).query
 
       query.append_filter_query(date_filter(conditions)) if conditions[:from] || conditions[:until]
-      query.append_filter_query(@options[:set_query].call(conditions[:set])) if conditions[:set]
+      query.append_filter_query(@set.from_spec(conditions[:set])) if conditions[:set]
 
       @controller.repository.search query
-    end
-
-    def sets_not_supported
-      raise ::OAI::SetException
     end
 
     def date_filter(conditions = {})

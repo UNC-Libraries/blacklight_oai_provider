@@ -102,24 +102,30 @@ In order to provide metadata to the OAI-PMH emdpoint, your `SolrDocument` will n
 
 ### Sets
 
-Support for record sets is not provided out of the box. To implement sets, first supply two callables in the OAI document configuration that return an array of all sets and filter a Solr query given a set spec. For example, assuming our application maps each `Collection` model to an OAI set using specs like `collection:rarebooks`:
+A basic set model is included that maps Solr fields to OAI sets. First, provide the fields to use as sets in the OAI config:
 
     config.oai = {
       document: {
-        sets: -> { Collection.all },
-        set_query: -> spec { "collection:#{spec.sub('collection:', '')}" }
+        set_fields: 'language'
       }
     }
 
-The `sets` callable must return an array of all sets. Sets (Collections in the example above) must implement several methods:
+This will cause the `ListSets` verb to query Solr for unique values of the `language` field and present each value as a set using a spec format of `language:value`. When the `set` parameter is supplied to the `ListRecords` verb, it will append a filter to the Solr query of the form `fq=language:value`.
 
-  * `spec`: returns an OAI-compliant set spec string
-  * `name`: returns the set's display name
-  * `description`: (optional) returns a longer description of the set
+Finally, your `SolrDocument` model must implement a `sets` method that returns an array of sets for each document. Ex:
 
-The `set_query` callable must accept a set spec string and return a string to be used in a Solr filter query. In the example, the `collection` field will be added to any other filters used by your search builder.
+    def sets
+      fetch('language', []).map { |l| BlacklightOaiProvider::Set.new("language:#{l}") }
+    end
 
-Finally, your `SolrDocument` model should implement a `sets` method that returns an array of sets for each document.
+You can substitute you own Set model using the `set_class` option. See `lib/blacklight_oai_provider/set` for an example implementation.
+
+    config.oai = {
+      document: {
+        set_fields: 'language',
+        set_model: '::MySetModel'
+      }
+    }
 
 ## Tests
 

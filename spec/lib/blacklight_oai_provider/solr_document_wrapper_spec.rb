@@ -1,14 +1,25 @@
 require 'rails_helper'
 
 RSpec.describe BlacklightOaiProvider::SolrDocumentWrapper do
-  subject { described_class.new(controller, {}) }
+  let(:options) { {} }
   let(:controller) { CatalogController.new }
+  subject { described_class.new(controller, options) }
 
   before { allow(controller).to receive(:params).and_return({}) }
 
+  describe "#initialize" do
+    context 'with a set class provided', :vcr do
+      let(:options) { {set_class: '::OaiSet', set_fields: 'language_facet'} }
+
+      it 'uses the Set class' do
+        expect(subject.sets.first).to be_a ::OaiSet
+      end
+    end
+  end
+
   describe "#sets" do
     it 'returns nil to indicate sets are not supported' do
-      expect { subject.sets }.to raise_error(::OAI::SetException)
+      expect(subject.sets).to be_nil
     end
   end
 

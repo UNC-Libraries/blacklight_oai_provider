@@ -70,10 +70,10 @@ RSpec.describe 'OAI-PMH catalog endpoint' do
     end
 
     context 'with a set' do
-      let(:document_config) { { set_query: ->(spec) { "language_facet:#{spec.sub('language:', '')}" } } }
+      let(:document_config) { { set_fields: 'language_facet' } }
 
       scenario 'only records from the set are returned' do
-        params = { verb: 'ListRecords', metadataPrefix: format, set: 'language:Japanese' }
+        params = { verb: 'ListRecords', metadataPrefix: format, set: 'language_facet:Japanese' }
 
         get oai_provider_catalog_path(params)
         records = xpath '//xmlns:record'
@@ -143,16 +143,13 @@ RSpec.describe 'OAI-PMH catalog endpoint' do
       end
     end
 
-    context 'with set configuration' do
-      let(:all_sets) do
-        [OpenStruct.new(spec: 'foo', name: 'Foo'), OpenStruct.new(spec: 'bar', name: 'Bar')]
-      end
-      let(:document_config) { { sets: -> { all_sets } } }
+    context 'with set configuration', :vcr do
+      let(:document_config) { { set_fields: 'language_facet' } }
 
       scenario 'shows all sets' do
         get oai_provider_catalog_path(verb: 'ListSets')
         sets = xpath '//xmlns:set'
-        expect(sets.count).to be 2
+        expect(sets.count).to be 11
       end
 
       scenario 'shows the correct verb' do
@@ -161,11 +158,7 @@ RSpec.describe 'OAI-PMH catalog endpoint' do
       end
 
       context 'where sets include descriptions' do
-        let(:set_description) { 'My set description' }
-        let(:all_sets) do
-          [OpenStruct.new(spec: 'foo', name: 'Foo', description: set_description),
-           OpenStruct.new(spec: 'bar', name: 'Bar')]
-        end
+        let(:document_config) { { set_fields: 'language_facet', set_class: 'OaiSet' } }
 
         scenario 'shows the set description object' do
           get oai_provider_catalog_path(verb: 'ListSets')
@@ -175,7 +168,7 @@ RSpec.describe 'OAI-PMH catalog endpoint' do
                                'oai_dc' => 'http://www.openarchives.org/OAI/2.0/oai_dc/'
 
           expect(descriptions.count).to be 1
-          expect(response.body).to include(set_description)
+          expect(response.body).to include('This set begins with an H')
         end
       end
     end

@@ -8,6 +8,7 @@ module BlacklightOaiProvider
   autoload :EmptyResumptionToken, 'blacklight_oai_provider/empty_resumption_token'
   autoload :ListSetsResponse, 'blacklight_oai_provider/list_sets_response'
   autoload :Routes, 'blacklight_oai_provider/routes'
+  autoload :Set, 'blacklight_oai_provider/set'
 
   require 'oai'
   require 'blacklight_oai_provider/version'

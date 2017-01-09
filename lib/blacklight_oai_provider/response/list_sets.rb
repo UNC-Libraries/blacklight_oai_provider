@@ -11,7 +11,7 @@ module BlacklightOaiProvider
                 r.setSpec set.spec
                 r.setName set.name
 
-                if set.respond_to? :description
+                if set.respond_to?(:description) && set.description
                   r.setDescription do
                     r.tag!("#{oai_dc.prefix}:#{oai_dc.element_namespace}", oai_dc.header_specification) do
                       r.dc :description, set.description
