@@ -7,6 +7,7 @@ module BlacklightOaiProvider
 
     included do
       helper_method :oai_config
+      skip_before_action :verify_authenticity_token, only: :oai
     end
 
     # Delivers a _partial_ that's a display of a single fields range facets.

@@ -93,7 +93,7 @@ http_interactions:
         aWFuJywnY291bnQnPT4yfSx7J2ZpZWxkJz0+J2xhbmd1YWdlX2ZhY2V0Jywn
         dmFsdWUnPT4nQ2hpbmVzZScsJ2NvdW50Jz0+MX1dfV19fX0K
     http_version: 
-  recorded_at: Mon, 09 Jan 2017 18:55:49 GMT
+  recorded_at: Mon, 09 Jan 2017 19:57:58 GMT
 - request:
     method: get
     uri: http://127.0.0.1:8983/solr/blacklight-core/select?f.language_facet.facet.limit=11&f.subject_topic_facet.facet.limit=21&facet=true&facet.field=subject_era_facet&facet.pivot=format,language_facet&facet.query=pub_date:%5B1992%20TO%20*%5D&fl=timestamp&rows=1&sort=timestamp%20desc&wt=ruby
@@ -187,7 +187,7 @@ http_interactions:
         c2lhbicsJ2NvdW50Jz0+Mn0seydmaWVsZCc9PidsYW5ndWFnZV9mYWNldCcs
         J3ZhbHVlJz0+J0NoaW5lc2UnLCdjb3VudCc9PjF9XX1dfX19Cg==
     http_version: 
-  recorded_at: Mon, 09 Jan 2017 18:55:49 GMT
+  recorded_at: Mon, 09 Jan 2017 19:57:58 GMT
 - request:
     method: get
     uri: http://127.0.0.1:8983/solr/blacklight-core/select?f.language_facet.facet.limit=11&f.subject_topic_facet.facet.limit=21&facet=true&facet.field=subject_era_facet&facet.pivot=format,language_facet&facet.query=pub_date:%5B1992%20TO%20*%5D&fq=timestamp:%5B2014-01-22T18:42:53Z%20TO%202014-10-10T18:42:53Z%5D&rows=10&sort=timestamp%20asc&wt=ruby
@@ -211,7 +211,7 @@ http_interactions:
     body:
       encoding: ASCII-8BIT
       string: !binary |-
-        eydyZXNwb25zZUhlYWRlcic9Pnsnc3RhdHVzJz0+MCwnUVRpbWUnPT4yLCdw
+        eydyZXNwb25zZUhlYWRlcic9Pnsnc3RhdHVzJz0+MCwnUVRpbWUnPT4xLCdw
         YXJhbXMnPT57J2ZhY2V0LnF1ZXJ5Jz0+WydwdWJfZGF0ZTpbMjAxMiBUTyAq
         XScsJ3B1Yl9kYXRlOlsyMDA3IFRPICpdJywncHViX2RhdGU6WzE5OTIgVE8g
         Kl0nXSwnZi5zdWJqZWN0X3RvcGljX2ZhY2V0LmZhY2V0LmxpbWl0Jz0+JzIx
@@ -416,5 +416,5 @@ http_interactions:
         PT4yfSx7J2ZpZWxkJz0+J2xhbmd1YWdlX2ZhY2V0JywndmFsdWUnPT4nQ2hp
         bmVzZScsJ2NvdW50Jz0+MX1dfV19fX0K
     http_version: 
-  recorded_at: Mon, 09 Jan 2017 18:55:50 GMT
+  recorded_at: Mon, 09 Jan 2017 19:57:58 GMT
 recorded_with: VCR 3.0.3

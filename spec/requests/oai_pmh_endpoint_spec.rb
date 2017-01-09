@@ -26,6 +26,13 @@ RSpec.describe 'OAI-PMH catalog endpoint' do
       get oai_provider_catalog_path(verb: 'Identify')
       expect(response.body).to include(repo_name)
     end
+
+    context 'as a POST request' do
+      scenario 'displays repository information' do
+        post oai_provider_catalog_path(verb: 'Identify')
+        expect(response.body).to include(repo_name)
+      end
+    end
   end
 
   describe 'ListRecords verb', :vcr do
