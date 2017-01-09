@@ -31,7 +31,7 @@ module BlacklightOaiProvider
       def sets_from_facets(facets)
         sets = []
         facets.each do |facet, terms|
-          sets.concat terms.each_slice(2).map { |t| self.new("#{facet}:#{t.first}") }
+          sets.concat terms.each_slice(2).map { |t| new("#{facet}:#{t.first}") }
         end
         sets.empty? ? nil : sets
       end

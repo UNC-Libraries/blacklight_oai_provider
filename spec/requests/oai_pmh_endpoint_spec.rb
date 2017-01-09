@@ -113,6 +113,14 @@ RSpec.describe 'OAI-PMH catalog endpoint' do
           expect(response.body).not_to include('2014-01-22T18:42:53Z')
           expect(response.body).not_to include('2014-10-10T18:42:53Z')
         end
+
+        context 'with a granularity mismatch' do
+          scenario 'reponds with a bad argument error' do
+            params = { verb: 'ListRecords', metadataPrefix: format, from: '2014-02', until: '2014-10-02' }
+            get oai_provider_catalog_path(params)
+            expect(response.body).to include('badArgument')
+          end
+        end
       end
     end
 

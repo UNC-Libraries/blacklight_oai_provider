@@ -48,8 +48,12 @@ module BlacklightOaiProvider
         end
         response.documents
       else
-        response = @controller.fetch(selector.split('/', 2).last).first
-        response.documents.first
+        begin
+          response = @controller.fetch(selector).first
+          response.documents.first
+        rescue Blacklight::Exceptions::RecordNotFound
+          nil
+        end
       end
     end
 

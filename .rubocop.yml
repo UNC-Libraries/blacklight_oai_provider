@@ -49,7 +49,11 @@ Metrics/MethodLength:
 
 Metrics/CyclomaticComplexity:
   Enabled: true
-  Max: 7
+  Max: 8
+
+Metrics/PerceivedComplexity:
+  Enabled: true
+  Max: 8
 
 ##################### RSpec ##################################
 
