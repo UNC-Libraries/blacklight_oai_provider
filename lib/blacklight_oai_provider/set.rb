@@ -1,13 +1,13 @@
 module BlacklightOaiProvider
   class Set
     class << self
-      # The Solr repository object
+      # The Solr repository object (optional)
       attr_accessor :repository
 
-      # The search builder used to construct OAI queries
+      # The search builder used to construct OAI queries (optional)
       attr_accessor :search_builder
 
-      # The Solr fields to map to OAI sets. Must be indexed
+      # The Solr fields to map to OAI sets. Must be indexed (optional)
       attr_accessor :fields
 
       # Return an array of all sets, or nil if sets are not supported

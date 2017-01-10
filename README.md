@@ -118,7 +118,7 @@ Finally, your `SolrDocument` model must implement a `sets` method that returns a
       fetch('language', []).map { |l| BlacklightOaiProvider::Set.new("language:#{l}") }
     end
 
-You can substitute you own Set model using the `set_class` option. See `lib/blacklight_oai_provider/set` for an example implementation.
+You can substitute your own Set model using the `set_class` option. See `lib/blacklight_oai_provider/set` for an example implementation.
 
     config.oai = {
       document: {
