@@ -14,7 +14,7 @@ RSpec.describe BlacklightOaiProvider::SolrDocumentProvider do
     end
 
     context 'with an invalid until date' do
-      let(:params) { { from: 'junk' } }
+      let(:params) { { until: 'asdasda' } }
       it { is_expected.to include('badArgument') }
     end
 

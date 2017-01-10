@@ -14,11 +14,6 @@ module BlacklightOaiProvider
   require 'blacklight_oai_provider/version'
   require 'blacklight_oai_provider/engine'
 
-  # Add element to array only if it's not already there
-  def self.safe_arr_add(array, element)
-    array << element unless array.include?(element)
-  end
-
   module Response
     autoload :ListSets, 'blacklight_oai_provider/response/list_sets'
   end

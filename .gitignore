@@ -10,6 +10,8 @@ spec/dummy/.sass-cache
 spec/examples.txt
 /tmp
 .byebug_history
+/coverage
+/spec/dummy/coverage
 
 # OSX hidden files
 .DS_Store

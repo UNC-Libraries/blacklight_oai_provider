@@ -129,8 +129,6 @@ You can substitute your own Set model using the `set_class` option. See `lib/bla
 
 ## Tests
 
-There are currently a few basic tests, but contributions are welcome!
-
 To run the test suite, you'll need to install all development dependencies using Bundler:
 
     $ bundle install
