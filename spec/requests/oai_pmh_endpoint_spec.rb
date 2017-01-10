@@ -113,14 +113,6 @@ RSpec.describe 'OAI-PMH catalog endpoint' do
           expect(response.body).not_to include('2014-01-22T18:42:53Z')
           expect(response.body).not_to include('2014-10-10T18:42:53Z')
         end
-
-        context 'with a granularity mismatch' do
-          scenario 'reponds with a bad argument error' do
-            params = { verb: 'ListRecords', metadataPrefix: format, from: '2014-02', until: '2014-10-02' }
-            get oai_provider_catalog_path(params)
-            expect(response.body).to include('badArgument')
-          end
-        end
       end
     end
 
@@ -139,14 +131,24 @@ RSpec.describe 'OAI-PMH catalog endpoint' do
   end
 
   describe 'GetRecord verb', :vcr do
-    scenario 'displays a single record' do
-      identifier = "oai:localhost:00282214"
+    let(:params) { { verb: 'GetRecord', metadataPrefix: format, identifier: identifier } }
+    let(:identifier) { 'oai:localhost:00282214' }
 
-      get oai_provider_catalog_path(verb: 'GetRecord', metadataPrefix: format, identifier: identifier)
+    scenario 'displays a single record' do
+      get oai_provider_catalog_path(params)
       records = xpath '//xmlns:record'
 
       expect(records.count).to be 1
       expect(response.body).to include(identifier)
+    end
+
+    context 'with an invalid identifier' do
+      let(:identifier) { 'oai:localhost:not_a_valid_id' }
+
+      it 'returns an error response' do
+        get oai_provider_catalog_path(params)
+        expect(response.body).to include('idDoesNotExist')
+      end
     end
   end
 

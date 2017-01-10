@@ -28,15 +28,20 @@ module BlacklightOaiProvider
     private
 
     def valid_dates?(params)
-      invalid = false
-      invalid = true if params[:from] && invalid_date?(params[:from])
-      invalid = true if params[:until] && invalid_date?(params[:until])
-      invalid = true if params[:from] && params[:until] && params[:from].length != params[:until].length
-      invalid
+      return false if params[:from] && invalid_date?(params[:from])
+      return false if params[:until] && invalid_date?(params[:until])
+      return false if params[:from] && params[:until] && granularity_differs?(params[:from], params[:until])
+      true
     end
 
     def invalid_date?(str)
       !Time.parse(str).utc.iso8601.include?(str)
+    rescue
+      true
+    end
+
+    def granularity_differs?(from, to)
+      from.length != to.length
     end
   end
 end

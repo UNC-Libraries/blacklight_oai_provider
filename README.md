@@ -149,7 +149,7 @@ Then, in another terminal, seed the test data into Solr:
     $ cd spec/dummy
     $ bundle exec rake spec:solr:index
 
-To view the dummy application in your browser, chnage to the application root and run rails from the bin script:
+To view the dummy application in your browser, change to the application root and run rails from the bin script:
 
     $ cd spec/dummy
     $ bin/rails server
