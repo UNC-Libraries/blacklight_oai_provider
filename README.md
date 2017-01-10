@@ -1,6 +1,7 @@
 # Blacklight OAI-PMH Provider
 
-[![Build Status](https://travis-ci.org/osulibraries/blacklight_oai_provider.svg?branch=master)](https://travis-ci.org/osulibraries/blacklight_oai_provider)
+[![Build Status][BS img]][Build Status]
+[![Coverage Status][CS img]][Coverage Status]
 
 OAI-PMH service endpoint for Blacklight applications.
 
@@ -154,4 +155,11 @@ To view the dummy application in your browser, change to the application root an
     $ cd spec/dummy
     $ bin/rails server
 
-You can test OAI-PMH conformance against [http://www.openarchives.org/data/registerasprovider.html#Protocol_Conformance_Testing](http://www.openarchives.org/data/registerasprovider.html#Protocol_Conformance_Testing) or browse the data at [http://re.cs.uct.ac.za/](http://re.cs.uct.ac.za/) 
+You can test OAI-PMH conformance against [http://www.openarchives.org/data/registerasprovider.html#Protocol_Conformance_Testing](http://www.openarchives.org/data/registerasprovider.html#Protocol_Conformance_Testing) or browse the data at [http://re.cs.uct.ac.za/](http://re.cs.uct.ac.za/)
+
+
+[Build Status]: https://travis-ci.org/osulibraries/blacklight_oai_provider
+[Coverage Status]: https://coveralls.io/github/osulibraries/blacklight_oai_provider?branch=master
+
+[BS img]: https://travis-ci.org/osulibraries/blacklight_oai_provider.svg?branch=master
+[CS img]: https://coveralls.io/repos/github/osulibraries/blacklight_oai_provider/badge.svg?branch=master

@@ -1,6 +1,12 @@
 # Start code coverage analysis
 require 'simplecov'
+require 'coveralls'
+
 SimpleCov.root(File.expand_path('../..', __FILE__))
+SimpleCov.formatters = [
+  SimpleCov::Formatter::HTMLFormatter,
+  Coveralls::SimpleCov::Formatter
+]
 SimpleCov.start :rails do
   add_filter '/lib/blacklight_oai_provider/version.rb'
   add_filter '/lib/generators'
