@@ -1,6 +1,8 @@
-# BlacklightOaiProvider
+# Blacklight OAI-PMH Provider
 
-OAI-PMH service endpoint for Blacklight applications
+[![Build Status](https://travis-ci.org/osulibraries/blacklight_oai_provider.svg?branch=master)](https://travis-ci.org/osulibraries/blacklight_oai_provider)
+
+OAI-PMH service endpoint for Blacklight applications.
 
 ## Description
 
