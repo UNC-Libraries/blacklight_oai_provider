@@ -7,7 +7,7 @@ OAI-PMH service endpoint for Blacklight applications.
 
 ## Description
 
-The BlacklightOaiProvider plugin provides an [Open Archives Initiative Protocolo for Metadata Harvesting](http://www.openarchives.org/pmh/) (OAI-PMH) data provider endpoint, using the ruby-oai gem, that let serice providers harvest that metadata.
+The BlacklightOaiProvider plugin provides an [Open Archives Initiative Protocolo for Metadata Harvesting](http://www.openarchives.org/pmh/) (OAI-PMH) data provider endpoint, using the `ruby-oai` gem, that let serice providers harvest that metadata.
 
 ## Requirements
 
@@ -29,20 +29,26 @@ After runniing the generator, `config/routes.rb` should contain a definition for
       concerns :oai_provider
     end 
 
-If you want to do customize the installation, instead you may:
+If you want to customize the installation, instead you may:
 
-  * extend your Solr Document model:
+  * Extend your Solr Document model:
     
+    ```
     include BlacklightOaiProvider::SolrDocumentBehavior
     use_extension Blacklight::Document::DublinCore
+    ```
 
-  * extend your Controller:
+  * Extend your Controller:
 
+    ```
     include BlacklightOaiProvider::CatalogControllerBehavior
+    ```
 
-  * add the concern your `config/routes.rb` and apply it to your Blacklight catalog routes as described above:
+  * Add the concern to `config/routes.rb` and apply it to your Blacklight catalog routes as described above:
 
+    ```
     concern :oai_provider, BlacklightOaiProvider::Routes::Provider.new
+    ```
 
 ## Configuration
 
@@ -64,7 +70,7 @@ In `app/controllers/catalog_controller.rb`
       }
     end
 
-The "provider" configuration is documented as part of the ruby-oai gem at [http://oai.rubyforge.org/](http://oai.rubyforge.org/)
+The "provider" configuration is documented as part of the `ruby-oai` gem at [http://oai.rubyforge.org/](http://oai.rubyforge.org/)
 
 ### Timestamps
 
