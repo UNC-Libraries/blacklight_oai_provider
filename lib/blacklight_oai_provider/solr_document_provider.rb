@@ -17,8 +17,15 @@ module BlacklightOaiProvider
     end
 
     def process_request(params = {})
-      return OAI::Provider::Response::Error.new(self.class, OAI::ArgumentException.new).to_xml unless valid_dates?(params)
-      super
+      begin
+        validate_granularity(params[:from], params[:until]) if params[:from] && params[:until]
+        params[:from] = parse_date(params[:from]) if params[:from]
+        params[:until] = parse_date(params[:until]) if params[:until]
+      rescue => err
+        return OAI::Provider::Response::Error.new(self.class, err).to_xml
+      end
+
+      super params
     end
 
     def list_sets(options = {})
@@ -27,21 +34,19 @@ module BlacklightOaiProvider
 
     private
 
-    def valid_dates?(params)
-      return false if params[:from] && invalid_date?(params[:from])
-      return false if params[:until] && invalid_date?(params[:until])
-      return false if params[:from] && params[:until] && granularity_differs?(params[:from], params[:until])
-      true
-    end
+    def parse_date(value)
+      return value if value.respond_to?(:strftime)
+      Date.parse(value) # This will raise an exception for badly formatted dates
 
-    def invalid_date?(str)
-      !Time.parse(str).utc.iso8601.include?(str)
+      ActiveSupport::TimeZone['UTC'].parse(value).tap do |date|
+        raise 'Wrong format' unless date.utc.iso8601.include?(value)
+      end
     rescue
-      true
+      raise OAI::ArgumentException.new, "Invalid date: '#{value}'"
     end
 
-    def granularity_differs?(from, to)
-      from.length != to.length
+    def validate_granularity(from, to)
+      raise(OAI::ArgumentException.new, "Date granularities do not match! #{from} - #{to}") unless from.length == to.length
     end
   end
 end

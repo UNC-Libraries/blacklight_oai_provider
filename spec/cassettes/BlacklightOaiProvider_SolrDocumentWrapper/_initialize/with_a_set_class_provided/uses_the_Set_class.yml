@@ -13,7 +13,7 @@ http_interactions:
       message: OK
     headers:
       Last-Modified:
-      - Mon, 09 Jan 2017 14:23:12 GMT
+      - Tue, 10 Jan 2017 15:48:58 GMT
       Etag:
       - '"NjAwMDAwMDAwMDAwMDAwMFNvbHI="'
       Content-Type:
@@ -22,10 +22,10 @@ http_interactions:
       - '1558'
     body:
       encoding: UTF-8
-      string: "{'responseHeader'=>{'status'=>0,'QTime'=>1,'params'=>{'facet.query'=>['pub_date:[2012
+      string: "{'responseHeader'=>{'status'=>0,'QTime'=>2,'params'=>{'facet.query'=>['pub_date:[2012
         TO *]','pub_date:[2007 TO *]','pub_date:[1992 TO *]'],'f.subject_topic_facet.facet.limit'=>'21','facet.limit'=>'1','facet.field'=>'language_facet','facet.pivot'=>'format,language_facet','sort'=>'score
         desc, pub_date_sort desc, title_sort asc','rows'=>'0','wt'=>'ruby','facet'=>'true','f.language_facet.facet.limit'=>'11'}},'response'=>{'numFound'=>30,'start'=>0,'maxScore'=>1.0,'docs'=>[]},'facet_counts'=>{'facet_queries'=>{'pub_date:[2012
         TO *]'=>0,'pub_date:[2007 TO *]'=>5,'pub_date:[1992 TO *]'=>17},'facet_fields'=>{'language_facet'=>['Tibetan',6,'Hebrew',3,'Korean',3,'Persian',3,'Sanskrit',3,'Urdu',3,'Arabic',2,'English',2,'Japanese',2,'Russian',2,'Chinese',1]},'facet_ranges'=>{},'facet_intervals'=>{},'facet_heatmaps'=>{},'facet_pivot'=>{'format,language_facet'=>[{'field'=>'format','value'=>'Book','count'=>30,'pivot'=>[{'field'=>'language_facet','value'=>'Tibetan','count'=>6},{'field'=>'language_facet','value'=>'Hebrew','count'=>3},{'field'=>'language_facet','value'=>'Korean','count'=>3},{'field'=>'language_facet','value'=>'Persian','count'=>3},{'field'=>'language_facet','value'=>'Sanskrit','count'=>3},{'field'=>'language_facet','value'=>'Urdu','count'=>3},{'field'=>'language_facet','value'=>'Arabic','count'=>2},{'field'=>'language_facet','value'=>'English','count'=>2},{'field'=>'language_facet','value'=>'Japanese','count'=>2},{'field'=>'language_facet','value'=>'Russian','count'=>2},{'field'=>'language_facet','value'=>'Chinese','count'=>1}]}]}}}\n"
     http_version: 
-  recorded_at: Mon, 09 Jan 2017 16:32:40 GMT
+  recorded_at: Tue, 10 Jan 2017 15:55:10 GMT
 recorded_with: VCR 3.0.3

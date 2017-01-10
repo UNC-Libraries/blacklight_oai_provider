@@ -10,12 +10,13 @@ AllCops:
   # behavior by overriding DisplayStyleGuide, or by giving the
   # -S/--display-style-guide option.
   DisplayStyleGuide: false
-  # Exclude some GitLab files
+  # Exclude unnecessary files
   Exclude:
     - 'spec/dummy/**/*'
     - 'tmp/**/*'
     - 'bin/**/*'
     - 'log/*'
+    - 'vendor/bundle/**/*'
 
 ##################### Rails ##################################
 
@@ -49,11 +50,11 @@ Metrics/MethodLength:
 
 Metrics/CyclomaticComplexity:
   Enabled: true
-  Max: 8
+  Max: 7
 
 Metrics/PerceivedComplexity:
   Enabled: true
-  Max: 8
+  Max: 7
 
 ##################### RSpec ##################################
 

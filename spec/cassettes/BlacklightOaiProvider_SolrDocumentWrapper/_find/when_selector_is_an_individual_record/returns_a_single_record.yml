@@ -13,7 +13,7 @@ http_interactions:
       message: OK
     headers:
       Last-Modified:
-      - Fri, 06 Jan 2017 02:49:16 GMT
+      - Tue, 10 Jan 2017 15:48:58 GMT
       Etag:
       - '"NjAwMDAwMDAwMDAwMDAwMFNvbHI="'
       Content-Type:
@@ -290,5 +290,5 @@ http_interactions:
         15zXmSddLCdsYW5ndWFnZV9mYWNldCc9PlsnSGVicmV3J10sJ3RpbWVzdGFt
         cCc9PicyMDE0LTAxLTIyVDE4OjQyOjUzLjA1NlonfV19fQo=
     http_version: 
-  recorded_at: Fri, 06 Jan 2017 03:09:57 GMT
+  recorded_at: Tue, 10 Jan 2017 15:55:10 GMT
 recorded_with: VCR 3.0.3
