@@ -13,6 +13,10 @@ Rails.application.routes.draw do
     concerns :searchable
   end
 
+  resource :second_catalog, only: [:index], as: 'second_catalog', path: '/second_catalog', controller: 'catalog' do
+    concerns :oai_provider, controller: 'second'
+  end
+
   concern :exportable, Blacklight::Routes::Exportable.new
 
   resources :solr_documents, only: [:show], path: '/catalog', controller: 'catalog' do

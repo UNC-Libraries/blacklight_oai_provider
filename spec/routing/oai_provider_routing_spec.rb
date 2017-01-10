@@ -6,4 +6,9 @@ RSpec.describe "routes Blacklight OAI provider", type: :routing do
     expect(get: "/catalog/oai").to route_to catalog_oai_action
     expect(post: "/catalog/oai").to route_to catalog_oai_action
   end
+
+  it "allows the controller to be overridden" do
+    catalog_oai_action = { controller: "second", action: "oai" }
+    expect(get: "/second_catalog/oai").to route_to catalog_oai_action
+  end
 end
