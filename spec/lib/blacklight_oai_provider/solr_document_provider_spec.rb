@@ -23,4 +23,15 @@ RSpec.describe BlacklightOaiProvider::SolrDocumentProvider do
       it { is_expected.to include('badArgument') }
     end
   end
+
+  describe '#initialize' do
+    context 'with a callable provider parameter' do
+      let(:url) { 'http://example.test' }
+      let(:options) { { provider: { repository_url: -> { url } } } }
+
+      it 'uses the return value of the proc' do
+        expect(provider.class.url).to eq url
+      end
+    end
+  end
 end

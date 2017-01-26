@@ -11,8 +11,12 @@ module BlacklightOaiProvider
 
       self.class.model = SolrDocumentWrapper.new(controller, options[:document])
 
-      options[:provider].each do |k, v|
-        self.class.send k, v
+      options[:provider].each do |key, value|
+        if value.respond_to? :call
+          self.class.send key, value.call
+        else
+          self.class.send key, value
+        end
       end
     end
 
