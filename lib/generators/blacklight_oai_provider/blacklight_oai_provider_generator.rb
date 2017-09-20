@@ -13,7 +13,7 @@ class BlacklightOaiProviderGenerator < Rails::Generators::Base
     end
 
     inject_into_file file_path, after: "include Blacklight::Solr::Document" do
-      "\n  include BlacklightOaiProvider::SolrDocumentBehavior\n"
+      "\n  include BlacklightOaiProvider::SolrDocumentBehavior"
     end
   end
 
@@ -22,6 +22,10 @@ class BlacklightOaiProviderGenerator < Rails::Generators::Base
     return unless File.exist? file_path
 
     inject_into_file file_path, after: "include Blacklight::Catalog" do
+      "\n  include BlacklightOaiProvider::CatalogControllerBehavior\n"
+    end
+
+    inject_into_file file_path, after: "include Hydra::Controller::ControllerBehavior" do
       "\n  include BlacklightOaiProvider::CatalogControllerBehavior\n"
     end
   end
