@@ -14,7 +14,7 @@ module BlacklightOaiProvider
       def all
         return if @fields.nil?
 
-        params = { rows: 0, facet: true, 'facet.limit' => 1, 'facet.field' => @fields }
+        params = { rows: 0, facet: true, 'facet.field' => @fields }
         response = @repository.search @search_builder.merge(params)
         sets_from_facets(response.facet_fields) if response.facet_fields
       end
