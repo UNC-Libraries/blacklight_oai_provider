@@ -150,9 +150,9 @@ p.intro {
 <xsl:call-template name='xmlstyle' />
 </xsl:template>
 
-<xsl:variable name="verb" select="substring-before(substring-after(substring-after(/oai:OAI-PMH/oai:request,'verb'), '&gt;'),'}')" />
-
-<!-- <xsl:variable name="verb" select="substring-before(substring-after(substring-after(/oai:OAI-PMH/oai:request,'verb'), '&gt;'),'}')" /> -->
+<xsl:variable name="verbWithQuotes" select="substring-before(substring-after(substring-after(/oai:OAI-PMH/oai:request,'verb'), '&gt;'),'}')" />
+<xsl:variable name="verbLength" select="string-length($verbWithQuotes)" />
+<xsl:variable name="verb" select="substring($verbWithQuotes, 2, number($verbLength)-2)" />
 
 <xsl:template match="/">
 <html>
@@ -539,7 +539,7 @@ p.intro {
         <tr><td class="key">resumptionToken:</td>
         <td class="value"><xsl:value-of select="."/>
 <xsl:text> </xsl:text>
-<a class="link" href="?verb={/oai:OAI-PMH/oai:request/verb}&amp;resumptionToken={.}">Resume</a></td></tr>
+<a class="link" href="?verb={$verb}&amp;resumptionToken={.}">Resume</a></td></tr>
       </table>
     </xsl:when>
     <xsl:otherwise>
