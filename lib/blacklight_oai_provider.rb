@@ -6,7 +6,6 @@ module BlacklightOaiProvider
   autoload :SolrDocumentProvider, 'blacklight_oai_provider/solr_document_provider'
   autoload :SolrDocumentWrapper, 'blacklight_oai_provider/solr_document_wrapper'
   autoload :EmptyResumptionToken, 'blacklight_oai_provider/empty_resumption_token'
-  autoload :ListSetsResponse, 'blacklight_oai_provider/list_sets_response'
   autoload :Routes, 'blacklight_oai_provider/routes'
   autoload :Set, 'blacklight_oai_provider/set'
 
