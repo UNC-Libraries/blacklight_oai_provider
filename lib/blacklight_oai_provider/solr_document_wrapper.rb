@@ -27,7 +27,7 @@ module BlacklightOaiProvider
     end
 
     def earliest
-      search_repository(fl: @timestamp_query_field, rows: 1).documents.first.send(@timestamp_field)
+      search_repository(fl: @timestamp_query_field, sort: 'asc', rows: 1).documents.first.send(@timestamp_field)
     rescue
       Time.at(0).utc
     end
