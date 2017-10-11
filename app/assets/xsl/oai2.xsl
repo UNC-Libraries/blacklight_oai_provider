@@ -150,11 +150,11 @@ p.intro {
 <xsl:call-template name='xmlstyle' />
 </xsl:template>
 
-<xsl:variable name="verbWithQuotes" select="substring-before(substring-after(substring-after(/oai:OAI-PMH/oai:request,'verb'), '&gt;'),'}')" />
-<xsl:variable name="verbLength" select="string-length($verbWithQuotes)" />
-<xsl:variable name="verb" select="substring($verbWithQuotes, 2, number($verbLength)-2)" />
+<xsl:variable name="identifier" select="substring-before(substring-after(substring-before(substring-after(substring-after(/oai:OAI-PMH/oai:request,'identifier'), '&gt;'),','), '&quot;'), '&quot;')" />
+<xsl:variable name="verb" select="substring-before(substring-after(substring-before(substring-after(substring-after(/oai:OAI-PMH/oai:request,'verb'), '&gt;'),'}'), '&quot;'), '&quot;')" />
 
-  <xsl:template match="/">
+
+<xsl:template match="/">
 <html>
   <head>
     <title>OAI 2.0 Request Results</title>
@@ -447,8 +447,8 @@ p.intro {
 
 <xsl:template match="oai:ListMetadataFormats">
   <xsl:choose>
-    <xsl:when test="$verb">
-      <p>This is a list of metadata formats available for the record "<xsl:value-of select='$verb' />". Use these links to view the metadata: <xsl:apply-templates select="oai:metadataFormat/oai:metadataPrefix" /></p>
+    <xsl:when test="$identifier">
+      <p>This is a list of metadata formats available for the record "<xsl:value-of select='$identifier' />". Use these links to view the metadata: <xsl:apply-templates select="oai:metadataFormat/oai:metadataPrefix" /></p>
     </xsl:when>
     <xsl:otherwise>
       <p>This is a list of metadata formats available from this archive.</p>
@@ -470,7 +470,7 @@ p.intro {
 </xsl:template>
 
 <xsl:template match="oai:metadataPrefix">
-      <xsl:text> </xsl:text><a class="link" href="?verb=ListRecords&amp;metadataPrefix={.}"><xsl:value-of select='.' /></a>
+      <xsl:text> </xsl:text><a class="link" href="?verb=GetRecord&amp;metadataPrefix={.}&amp;identifier={$identifier}"><xsl:value-of select='.' /></a>
 </xsl:template>
 
 <!-- record object -->
