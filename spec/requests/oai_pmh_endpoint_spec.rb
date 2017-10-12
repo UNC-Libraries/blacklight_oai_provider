@@ -48,7 +48,7 @@ RSpec.describe 'OAI-PMH catalog endpoint' do
 
       scenario 'a resumption token is provided' do
         params = { verb: 'ListRecords', metadataPrefix: format }
-        expected_token = 'oai_dc.f(2014-01-22T18:42:53Z).u(2014-10-10T18:42:53Z):25'
+        expected_token = 'oai_dc.f(2014-01-22T18:42:53Z).u(2014-10-10T18:42:54Z):25'
 
         get oai_provider_catalog_path(params)
         token = xpath '//xmlns:resumptionToken'

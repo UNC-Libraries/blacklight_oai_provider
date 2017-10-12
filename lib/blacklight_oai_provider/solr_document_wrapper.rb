@@ -42,6 +42,7 @@ module BlacklightOaiProvider
       return next_set(options[:resumption_token]) if options[:resumption_token]
 
       if :all == selector
+        options[:until] = options[:until] + 1.second unless options[:until].nil?
         response = search_repository conditions: options
         if @limit && response.total > @limit
           return select_partial(OAI::Provider::ResumptionToken.new(options.merge(last: 0)), response.documents)
@@ -93,8 +94,11 @@ module BlacklightOaiProvider
 
     def date_filter(conditions = {})
       from = conditions[:from] || earliest
-      to = conditions[:until] || latest
-      "#{@timestamp_query_field}:[#{from.utc.iso8601} TO #{to.utc.iso8601}]"
+      if conditions[:until]
+        "#{@timestamp_query_field}:[#{from.utc.iso8601} TO #{conditions[:until].utc.iso8601}]"
+      else
+        "#{@timestamp_query_field}:[#{from.utc.iso8601} TO #{latest.utc.iso8601}+1SECOND]"
+      end
     end
   end
 end

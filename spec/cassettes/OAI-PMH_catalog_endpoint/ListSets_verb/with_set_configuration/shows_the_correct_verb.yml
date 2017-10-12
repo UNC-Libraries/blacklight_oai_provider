@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: http://127.0.0.1:8983/solr/blacklight-core/select?f.language_facet.facet.limit=11&f.subject_topic_facet.facet.limit=21&facet=true&facet.field=language_facet&facet.limit=1&facet.pivot=format,language_facet&facet.query=pub_date:%5B1992%20TO%20*%5D&rows=0&sort=score%20desc,%20pub_date_sort%20desc,%20title_sort%20asc&wt=ruby
+    uri: http://127.0.0.1:8983/solr/blacklight-core/select?f.language_facet.facet.limit=11&f.subject_topic_facet.facet.limit=21&facet=true&facet.field=language_facet&facet.pivot=format,language_facet&facet.query=pub_date:%5B1992%20TO%20*%5D&rows=0&sort=score%20desc,%20pub_date_sort%20desc,%20title_sort%20asc&wt=ruby
     body:
       encoding: US-ASCII
       string: ''
@@ -30,7 +30,7 @@ http_interactions:
   recorded_at: Tue, 10 Jan 2017 15:55:09 GMT
 - request:
     method: get
-    uri: http://127.0.0.1:8983/solr/blacklight-core/select?f.language_facet.facet.limit=11&f.subject_topic_facet.facet.limit=21&facet=true&facet.field=language_facet&facet.limit=1&facet.pivot=format,language_facet&facet.query=pub_date:%5B1992%20TO%20*%5D&rows=0&sort=score%20desc,%20pub_date_sort%20desc,%20title_sort%20asc&wt=ruby
+    uri: http://127.0.0.1:8983/solr/blacklight-core/select?f.language_facet.facet.limit=11&f.subject_topic_facet.facet.limit=21&facet=true&facet.field=language_facet&facet.pivot=format,language_facet&facet.query=pub_date:%5B1992%20TO%20*%5D&rows=0&sort=score%20desc,%20pub_date_sort%20desc,%20title_sort%20asc&wt=ruby
     body:
       encoding: US-ASCII
       string: ''
