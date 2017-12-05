@@ -151,7 +151,7 @@ p.intro {
 </xsl:template>
 
 <xsl:variable name="identifier" select="substring-before(substring-after(substring-before(substring-after(substring-after(/oai:OAI-PMH/oai:request,'identifier'), '&gt;'),','), '&quot;'), '&quot;')" />
-<xsl:variable name="verb" select="substring-before(substring-after(substring-before(substring-after(substring-after(/oai:OAI-PMH/oai:request,'verb'), '&gt;'),'}'), '&quot;'), '&quot;')" />
+<xsl:variable name="verb" select="name(/oai:OAI-PMH/oai:request/following-sibling::*[1])" />
 
 
 <xsl:template match="/">
